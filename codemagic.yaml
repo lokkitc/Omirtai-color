@@ -64,36 +64,24 @@ workflows:
             exit 1
           fi
       
-      - name: Build iOS
+      - name: Build iOS App (without code signing)
         script: |
-          echo "Building iOS app..."
-          mkdir -p build/ios
-          # Skip pod install during build as we've already done it manually
-          flutter build ios --release --no-codesign --no-pub
-      
-      - name: Build IPA (without code signing)
-        script: |
-          echo "Creating unsigned IPA..."
+          echo "Building iOS app without code signing..."
           cd ios
           # Create build directory if it doesn't exist
           mkdir -p build/ios
-          # Build archive with proper settings for development distribution
-          xcodebuild archive -workspace Runner.xcworkspace -scheme Runner -configuration Release -archivePath Runner.xcarchive -sdk iphoneos CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
-          # Export unsigned IPA with development method
-          xcodebuild -exportArchive -archivePath Runner.xcarchive -exportPath build/ios -exportOptionsPlist exportOptions.plist CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
-          # List files to verify IPA creation
-          echo "Checking for IPA file..."
+          # Build the app bundle directly without archiving
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Release -sdk iphoneos -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+          # Copy the built app to our artifacts directory
+          cp -r build/Build/Products/Release-iphoneos/Runner.app build/ios/
+          # List files to verify app creation
+          echo "Checking for app file..."
           ls -la build/ios/
-          # Also list the archive for debugging
-          echo "Archive contents:"
-          ls -la Runner.xcarchive
           cd ..
     
     artifacts:
-      - build/ios/*.ipa
       - build/ios/*.app
       - build/ios/*.dSYM
-      - "*.xcarchive"
       - flutter_drive.log
     
     publishing:
