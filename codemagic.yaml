@@ -77,10 +77,10 @@ workflows:
           cd ios
           # Create build directory if it doesn't exist
           mkdir -p build/ios
-          # Build archive with proper settings for ad-hoc distribution
+          # Build archive with proper settings for development distribution
           xcodebuild archive -workspace Runner.xcworkspace -scheme Runner -configuration Release -archivePath Runner.xcarchive -sdk iphoneos CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
-          # Export unsigned IPA with ad-hoc method
-          xcodebuild -exportArchive -archivePath Runner.xcarchive -exportPath build/ios -exportOptionsPlist exportOptions.plist
+          # Export unsigned IPA with development method
+          xcodebuild -exportArchive -archivePath Runner.xcarchive -exportPath build/ios -exportOptionsPlist exportOptions.plist CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
           # List files to verify IPA creation
           echo "Checking for IPA file..."
           ls -la build/ios/
