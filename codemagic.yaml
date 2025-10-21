@@ -75,16 +75,22 @@ workflows:
         script: |
           echo "Creating unsigned IPA..."
           cd ios
-          # Build unsigned IPA
-          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Release -sdk iphoneos -destination generic/platform=iOS clean archive -archivePath $CM_BUILD_DIR/Runner.xcarchive CODE_SIGNING_ALLOWED=NO
+          # Create build directory if it doesn't exist
+          mkdir -p build/ios
+          # Build archive
+          xcodebuild archive -workspace Runner.xcworkspace -scheme Runner -configuration Release -archivePath Runner.xcarchive CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
           # Export unsigned IPA
-          xcodebuild -exportArchive -archivePath $CM_BUILD_DIR/Runner.xcarchive -exportPath $CM_BUILD_DIR/build/ios -exportOptionsPlist exportOptions.plist CODE_SIGNING_ALLOWED=NO
+          xcodebuild -exportArchive -archivePath Runner.xcarchive -exportPath build/ios -exportOptionsPlist exportOptions.plist CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+          # List files to verify IPA creation
+          echo "Checking for IPA file..."
+          ls -la build/ios/
           cd ..
     
     artifacts:
       - build/ios/*.ipa
       - build/ios/*.app
       - build/ios/*.dSYM
+      - "*.xcarchive"
       - flutter_drive.log
     
     publishing:
