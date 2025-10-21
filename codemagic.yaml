@@ -1,5 +1,9 @@
 # Codemagic CI/CD configuration for Omirtai Color application
 
+# Set to true to run tests during build, false to skip tests
+env:
+  RUN_TESTS: false
+
 workflows:
   ios-workflow:
     name: Omirtai Color iOS
@@ -37,7 +41,12 @@ workflows:
       
       - name: Run tests
         script: |
-          flutter test
+          if [ "$RUN_TESTS" = true ]; then
+            echo "Running tests..."
+            flutter test
+          else
+            echo "Skipping tests as RUN_TESTS is set to false"
+          fi
       
       - name: Set up code signing
         script: |

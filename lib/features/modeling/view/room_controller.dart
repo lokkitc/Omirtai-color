@@ -31,10 +31,10 @@ class RoomParameters with ChangeNotifier {
   String? _cachedModel;
   String? _cachedModelKey;
 
-  // Геттеры для параметров комнаты
-  double get roomWidth => _roomWidth;
-  double get roomDepth => _roomDepth;
-  double get roomHeight => _roomHeight;
+  // Геттеры для параметров комнаты (в метрах)
+  double get roomWidth => _roomWidth / 1000.0;
+  double get roomDepth => _roomDepth / 1000.0;
+  double get roomHeight => _roomHeight / 1000.0;
 
   Color get floorColor => _floorColor;
   Color get ceilingColor => _ceilingColor;
@@ -57,7 +57,7 @@ class RoomParameters with ChangeNotifier {
       return 'asset:///assets/models/room.glb';
     } else {
       // Create a key for current parameters
-      final currentKey = '$_roomWidth:$_roomDepth:$_roomHeight:'
+      final currentKey = '${roomWidth}:${roomDepth}:${roomHeight}:'
           '${_floorColor.value}:${_ceilingColor.value}:'
           '${_leftWallColor.value}:${_rightWallColor.value}:'
           '${_frontWallColor.value}:${_backWallColor.value}:'
@@ -74,12 +74,12 @@ class RoomParameters with ChangeNotifier {
       }
       
       // Добавляем отладочный вывод
-      debugPrint('Generating model with width: $_roomWidth, depth: $_roomDepth, height: $_roomHeight');
+      debugPrint('Generating model with width: ${roomWidth} m, depth: ${roomDepth} m, height: ${roomHeight} m');
       final model = RoomModelGenerator.generateRoomModel(
-        // Convert mm to meters for the model generator
-        width: _roomWidth / 1000.0,
-        depth: _roomDepth / 1000.0,
-        height: _roomHeight / 1000.0,
+        // Values are already in meters from getters
+        width: roomWidth,
+        depth: roomDepth,
+        height: roomHeight,
         floorColor: _floorColor,
         ceilingColor: _ceilingColor,
         leftWallColor: _leftWallColor,
@@ -105,27 +105,27 @@ class RoomParameters with ChangeNotifier {
 
   // Сеттеры для параметров комнаты
   set roomWidth(double value) {
-    debugPrint('Setting room width to: $value mm');
-    if (_roomWidth != value) {
-      _roomWidth = value;
+    debugPrint('Setting room width to: $value m (${_roomWidth} mm)');
+    if (_roomWidth != value * 1000.0) {
+      _roomWidth = value * 1000.0;
       _clearCache();
       notifyListeners();
     }
   }
 
   set roomDepth(double value) {
-    debugPrint('Setting room depth to: $value mm');
-    if (_roomDepth != value) {
-      _roomDepth = value;
+    debugPrint('Setting room depth to: $value m (${_roomDepth} mm)');
+    if (_roomDepth != value * 1000.0) {
+      _roomDepth = value * 1000.0;
       _clearCache();
       notifyListeners();
     }
   }
 
   set roomHeight(double value) {
-    debugPrint('Setting room height to: $value mm');
-    if (_roomHeight != value) {
-      _roomHeight = value;
+    debugPrint('Setting room height to: $value m (${_roomHeight} mm)');
+    if (_roomHeight != value * 1000.0) {
+      _roomHeight = value * 1000.0;
       _clearCache();
       notifyListeners();
     }
@@ -256,9 +256,9 @@ class RoomParameters with ChangeNotifier {
   // Метод для сброса к значениям по умолчанию
   void resetToDefault() {
     debugPrint('Resetting to default values');
-    _roomWidth = 4000.0;
-    _roomDepth = 4000.0;
-    _roomHeight = 3000.0;
+    _roomWidth = 4000.0;  // 4 meters
+    _roomDepth = 4000.0;  // 4 meters
+    _roomHeight = 3000.0; // 3 meters
     
     _floorColor = const Color(0xFF8B4513);
     _ceilingColor = const Color(0xFF87CEEB);
