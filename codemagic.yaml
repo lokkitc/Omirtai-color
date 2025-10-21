@@ -54,6 +54,13 @@ workflows:
           # Code signing will be handled by Codemagic
           # You'll need to configure this in the Codemagic UI
       
+      - name: Install CocoaPods dependencies
+        script: |
+          echo "Installing CocoaPods dependencies..."
+          cd ios
+          pod install --repo-update
+          cd ..
+      
       - name: Build iOS
         script: |
           echo "Building iOS app..."
