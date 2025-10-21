@@ -56,18 +56,11 @@ workflows:
       
       - name: Install and setup CocoaPods
         script: |
-          echo "Installing and setting up CocoaPods..."
-          cd ios
-          # Completely remove any existing CocoaPods setup
-          rm -f Podfile.lock
-          rm -rf Pods/
-          # Install CocoaPods from scratch
-          sudo gem install cocoapods
-          # Setup CocoaPods master repo
-          pod setup
-          # Install dependencies
-          pod install --repo-update
-          cd ..
+          echo "Installing and setting up CocoaPods using custom script..."
+          # Make the script executable
+          chmod +x ios/setup_cocoapods.sh
+          # Run the script
+          ./ios/setup_cocoapods.sh
       
       - name: Build iOS
         script: |
