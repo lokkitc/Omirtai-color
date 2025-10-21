@@ -54,19 +54,22 @@ workflows:
           # Code signing will be handled by Codemagic
           # You'll need to configure this in the Codemagic UI
       
-      - name: Install and setup CocoaPods
+      - name: Install and setup CocoaPods manually
         script: |
-          echo "Installing and setting up CocoaPods using custom script..."
+          echo "Installing and setting up CocoaPods manually..."
           # Make the script executable
           chmod +x ios/setup_cocoapods.sh
           # Run the script
           ./ios/setup_cocoapods.sh
+          # Verify that pods were installed
+          ls -la ios/Pods/
       
       - name: Build iOS
         script: |
           echo "Building iOS app..."
           mkdir -p build/ios
-          flutter build ios --release --no-codesign
+          # Skip pod install during build as we've already done it manually
+          flutter build ios --release --no-codesign --no-pub
       
       - name: Build IPA
         script: |

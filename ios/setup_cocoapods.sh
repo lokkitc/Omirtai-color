@@ -10,13 +10,14 @@ cd ios
 echo "Cleaning up existing CocoaPods setup..."
 rm -f Podfile.lock
 rm -rf Pods/
+rm -rf ~/.cocoapods/
 
 # Check if CocoaPods is installed
 if command -v pod &> /dev/null; then
     echo "CocoaPods is installed. Checking version..."
     pod --version
 else
-    echo "CocoaPods is not installed. Installing..."
+    echo "CocoaPods is not installed."
 fi
 
 # Update system gems
@@ -39,9 +40,21 @@ pod --version
 echo "Setting up CocoaPods master repo..."
 pod setup
 
+# Wait a moment for setup to complete
+sleep 10
+
 # Install dependencies
 echo "Installing pod dependencies..."
 pod install --repo-update
+
+# Verify installation
+if [ -d "Pods" ]; then
+    echo "CocoaPods installation successful!"
+    ls -la Pods/ | head -10
+else
+    echo "ERROR: CocoaPods installation failed!"
+    exit 1
+fi
 
 # Go back to root directory
 cd ..
