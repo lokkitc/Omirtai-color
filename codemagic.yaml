@@ -17,7 +17,7 @@ workflows:
     cache:
       cache_paths:
         - $FLUTTER_ROOT/.pub-cache
-        - ios/Pods
+        # Removed ios/Pods from cache as it causes issues with paths
     
     triggering:
       events:
@@ -54,19 +54,18 @@ workflows:
           # Code signing will be handled by Codemagic
           # You'll need to configure this in the Codemagic UI
       
-      - name: Fix Flutter paths and install CocoaPods
+      - name: Install and setup CocoaPods
         script: |
-          echo "Fixing Flutter paths and installing CocoaPods dependencies..."
-          # Remove the generated files that contain Windows paths
-          rm -f ios/Flutter/Generated.xcconfig
-          rm -f ios/Flutter/flutter_export_environment.sh
-          # Regenerate Flutter files with correct paths
-          flutter precache --ios
+          echo "Installing and setting up CocoaPods..."
           cd ios
-          # Force reinstall CocoaPods
-          gem uninstall cocoapods
-          gem install cocoapods
-          # Install pods
+          # Completely remove any existing CocoaPods setup
+          rm -f Podfile.lock
+          rm -rf Pods/
+          # Install CocoaPods from scratch
+          sudo gem install cocoapods
+          # Setup CocoaPods master repo
+          pod setup
+          # Install dependencies
           pod install --repo-update
           cd ..
       
