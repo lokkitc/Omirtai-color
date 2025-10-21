@@ -48,12 +48,6 @@ workflows:
             echo "Skipping tests as RUN_TESTS is set to false"
           fi
       
-      - name: Set up code signing
-        script: |
-          echo "Setting up code signing..."
-          # Code signing will be handled by Codemagic
-          # You'll need to configure this in the Codemagic UI
-      
       - name: Install and setup CocoaPods manually
         script: |
           echo "Installing and setting up CocoaPods manually..."
@@ -77,12 +71,15 @@ workflows:
           # Skip pod install during build as we've already done it manually
           flutter build ios --release --no-codesign --no-pub
       
-      - name: Build IPA
+      - name: Build IPA (without code signing)
         script: |
-          echo "Creating IPA..."
+          echo "Creating unsigned IPA..."
           cd ios
-          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Release -sdk iphoneos -destination generic/platform=iOS clean archive -archivePath $CM_BUILD_DIR/Runner.xcarchive
-          xcodebuild -exportArchive -archivePath $CM_BUILD_DIR/Runner.xcarchive -exportPath $CM_BUILD_DIR/build/ios -exportOptionsPlist exportOptions.plist
+          # Build unsigned IPA
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Release -sdk iphoneos -destination generic/platform=iOS clean archive -archivePath $CM_BUILD_DIR/Runner.xcarchive CODE_SIGNING_ALLOWED=NO
+          # Export unsigned IPA
+          xcodebuild -exportArchive -archivePath $CM_BUILD_DIR/Runner.xcarchive -exportPath $CM_BUILD_DIR/build/ios -exportOptionsPlist exportOptions.plist CODE_SIGNING_ALLOWED=NO
+          cd ..
     
     artifacts:
       - build/ios/*.ipa
