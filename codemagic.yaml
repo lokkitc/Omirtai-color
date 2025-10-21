@@ -12,7 +12,7 @@ workflows:
     environment:
       flutter: 3.35.6
       xcode: 15.2
-      cocoapods: 1.15.2
+      cocoapods: 1.11.3  # Use compatible version
     
     cache:
       cache_paths:
@@ -62,7 +62,13 @@ workflows:
           # Run the script
           ./ios/setup_cocoapods.sh
           # Verify that pods were installed
-          ls -la ios/Pods/
+          if [ -d "ios/Pods" ]; then
+            echo "Pods directory exists:"
+            ls -la ios/Pods/ | head -10
+          else
+            echo "ERROR: Pods directory not found!"
+            exit 1
+          fi
       
       - name: Build iOS
         script: |
