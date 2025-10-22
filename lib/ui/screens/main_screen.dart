@@ -63,27 +63,15 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0x1A000000), // Мягкая черная с прозрачностью (10%)
-                offset: const Offset(0, 2), // Смещение вниз
-                blurRadius: 4, // Размытие
-                spreadRadius: 0, // Без расширения
-              ),
-            ],
-          ),
-          child: AppBar(
-            title: Text(
-              screenTitles[_currentIndex],
-              style: const TextStyle(
-                fontWeight: FontWeight.w600, // SemiBold
-              ),
+        child: AppBar(
+          title: Text(
+            screenTitles[_currentIndex],
+            style: const TextStyle(
+              fontWeight: FontWeight.w600, // SemiBold
             ),
-            centerTitle: true,
-            // Removed the menu button from actions since we want to remove the duplicate drawer navigation
           ),
+          centerTitle: true,
+          // Removed the menu button from actions since we want to remove the duplicate drawer navigation
         ),
       ),
       body: PageView(
@@ -93,55 +81,44 @@ class _MainScreenState extends State<MainScreen> {
         children: _screens,
       ),
       bottomNavigationBar: navigationConfigService.showBottomNavBar
-          ? Container(
-              decoration: const BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 10,
-                    spreadRadius: 1,
-                  ),
-                ],
-              ),
-              child: BottomNavigationBar(
-                currentIndex: _currentIndex,
-                onTap: _onTabTapped,
-                selectedItemColor: Theme.of(context).primaryColor,
-                unselectedItemColor: AppColors.gray,
-                selectedFontSize: AppFonts.titleMedium, // AppFonts.titleSmall
-                unselectedFontSize: AppFonts.bodySmall, // AppFonts.bodySmall
-                type: BottomNavigationBarType.fixed,
-                showSelectedLabels: true,
-                showUnselectedLabels: true,
-                elevation: 0,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.home_outlined),
-                    activeIcon: const Icon(Icons.home),
-                    label: localizations.translate('home'),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.color_lens_outlined),
-                    activeIcon: const Icon(Icons.color_lens),
-                    label: localizations.translate('colors'),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.calculate_outlined),
-                    activeIcon: const Icon(Icons.calculate),
-                    label: localizations.translate('calculators'),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.view_in_ar_outlined),
-                    activeIcon: const Icon(Icons.view_in_ar),
-                    label: localizations.translate('modelingScreen'),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.settings_outlined),
-                    activeIcon: const Icon(Icons.settings),
-                    label: localizations.translate('settings'),
-                  ),
-                ],
-              ),
+          ? BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: _onTabTapped,
+              selectedItemColor: Theme.of(context).primaryColor,
+              unselectedItemColor: AppColors.gray,
+              selectedFontSize: AppFonts.titleMedium, // AppFonts.titleSmall
+              unselectedFontSize: AppFonts.bodySmall, // AppFonts.bodySmall
+              type: BottomNavigationBarType.fixed,
+              showSelectedLabels: true,
+              showUnselectedLabels: true,
+              elevation: 0,
+              items: [
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.home_outlined),
+                  activeIcon: const Icon(Icons.home),
+                  label: localizations.translate('home'),
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.color_lens_outlined),
+                  activeIcon: const Icon(Icons.color_lens),
+                  label: localizations.translate('colors'),
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.calculate_outlined),
+                  activeIcon: const Icon(Icons.calculate),
+                  label: localizations.translate('calculators'),
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.view_in_ar_outlined),
+                  activeIcon: const Icon(Icons.view_in_ar),
+                  label: localizations.translate('modelingScreen'),
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.settings_outlined),
+                  activeIcon: const Icon(Icons.settings),
+                  label: localizations.translate('settings'),
+                ),
+              ],
             )
           : null,
       drawer: navigationConfigService.showDrawer ? _buildDrawer(localizations) : null,

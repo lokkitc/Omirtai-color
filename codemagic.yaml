@@ -64,9 +64,9 @@ workflows:
             exit 1
           fi
       
-      - name: Build iOS App (without code signing)
+      - name: Build iOS App and prepare for distribution
         script: |
-          echo "Building iOS app without code signing..."
+          echo "Building iOS app and preparing for distribution..."
           cd ios
           # Create build directory if it doesn't exist
           mkdir -p build/ios
@@ -74,14 +74,20 @@ workflows:
           xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Release -sdk iphoneos -derivedDataPath build CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
           # Copy the built app to our artifacts directory
           cp -r build/Build/Products/Release-iphoneos/Runner.app build/ios/
-          # List files to verify app creation
-          echo "Checking for app file..."
-          ls -la build/ios/
+          # Create a zip of the app for easier download
+          cd build/ios
+          zip -r Runner.app.zip Runner.app
+          # Go back to project root
+          cd ../../..
+          # List files to verify creation
+          echo "Checking for app bundle..."
+          ls -la ios/build/ios/
           cd ..
     
     artifacts:
-      - build/ios/*.app
-      - build/ios/*.dSYM
+      - ios/build/ios/*.app.zip
+      - ios/build/ios/*.app
+      - ios/build/ios/*.dSYM
       - flutter_drive.log
     
     publishing:

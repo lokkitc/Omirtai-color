@@ -60,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const SizedBox(height: AppSpacing.l),
               Card(
                 color: Theme.of(context).appBarTheme.backgroundColor,
-                elevation: 2,
+                elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppSpacing.radiusM),
                 ),
@@ -136,7 +136,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const SizedBox(height: AppSpacing.l),
               Card(
                 color: Theme.of(context).appBarTheme.backgroundColor,
-                elevation: 2,
+                elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppSpacing.radiusM),
                 ),
@@ -161,7 +161,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const SizedBox(height: AppSpacing.l),
               Card(
                 color: Theme.of(context).appBarTheme.backgroundColor,
-                elevation: 2,
+                elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppSpacing.radiusM),
                 ),

@@ -114,7 +114,6 @@ class _CalculatorOptionCardState extends State<_CalculatorOptionCard> {
       curve: Curves.easeInOut,
       transform: Matrix4.diagonal3Values(_isPressed ? 0.98 : 1.0, _isPressed ? 0.98 : 1.0, 1.0),
       child: Card(
-        elevation: 4,
         color: Theme.of(context).appBarTheme.backgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSpacing.radiusM),

@@ -57,16 +57,16 @@ class RoomParameters with ChangeNotifier {
       return 'asset:///assets/models/room.glb';
     } else {
       // Create a key for current parameters
-      final currentKey = '${roomWidth}:${roomDepth}:${roomHeight}:'
+      final currentKey = '$roomWidth:$roomDepth:$roomHeight:'
           '${_floorColor.value}:${_ceilingColor.value}:'
           '${_leftWallColor.value}:${_rightWallColor.value}:'
           '${_frontWallColor.value}:${_backWallColor.value}:'
-          '${_floorTexture?.name ?? "null"}:'
-          '${_ceilingTexture?.name ?? "null"}:'
-          '${_leftWallTexture?.name ?? "null"}:'
-          '${_rightWallTexture?.name ?? "null"}:'
-          '${_frontWallTexture?.name ?? "null"}:'
-          '${_backWallTexture?.name ?? "null"}';
+          '${_floorTexture?.name ?? 'null'}:'
+          '${_ceilingTexture?.name ?? 'null'}:'
+          '${_leftWallTexture?.name ?? 'null'}:'
+          '${_rightWallTexture?.name ?? 'null'}:'
+          '${_frontWallTexture?.name ?? 'null'}:'
+          '${_backWallTexture?.name ?? 'null'}';
       
       // Check if we have a cached model for these parameters
       if (_cachedModel != null && _cachedModelKey == currentKey) {
@@ -74,7 +74,7 @@ class RoomParameters with ChangeNotifier {
       }
       
       // Добавляем отладочный вывод
-      debugPrint('Generating model with width: ${roomWidth} m, depth: ${roomDepth} m, height: ${roomHeight} m');
+      debugPrint('Generating model with width: $roomWidth m, depth: $roomDepth m, height: $roomHeight m');
       final model = RoomModelGenerator.generateRoomModel(
         // Values are already in meters from getters
         width: roomWidth,
@@ -105,7 +105,7 @@ class RoomParameters with ChangeNotifier {
 
   // Сеттеры для параметров комнаты
   set roomWidth(double value) {
-    debugPrint('Setting room width to: $value m (${_roomWidth} mm)');
+    debugPrint('Setting room width to: $value m ($_roomWidth mm)');
     if (_roomWidth != value * 1000.0) {
       _roomWidth = value * 1000.0;
       _clearCache();
@@ -114,7 +114,7 @@ class RoomParameters with ChangeNotifier {
   }
 
   set roomDepth(double value) {
-    debugPrint('Setting room depth to: $value m (${_roomDepth} mm)');
+    debugPrint('Setting room depth to: $value m ($_roomDepth mm)');
     if (_roomDepth != value * 1000.0) {
       _roomDepth = value * 1000.0;
       _clearCache();
@@ -123,7 +123,7 @@ class RoomParameters with ChangeNotifier {
   }
 
   set roomHeight(double value) {
-    debugPrint('Setting room height to: $value m (${_roomHeight} mm)');
+    debugPrint('Setting room height to: $value m ($_roomHeight mm)');
     if (_roomHeight != value * 1000.0) {
       _roomHeight = value * 1000.0;
       _clearCache();
@@ -187,7 +187,7 @@ class RoomParameters with ChangeNotifier {
 
   // Сеттеры для текстур
   set floorTexture(texture_model.Texture? value) {
-    debugPrint('Setting floor texture to: ${value?.name ?? "none"}');
+    debugPrint('Setting floor texture to: ${value?.name ?? 'none'}');
     if (_floorTexture != value) {
       _floorTexture = value;
       _clearCache();
@@ -196,7 +196,7 @@ class RoomParameters with ChangeNotifier {
   }
 
   set ceilingTexture(texture_model.Texture? value) {
-    debugPrint('Setting ceiling texture to: ${value?.name ?? "none"}');
+    debugPrint('Setting ceiling texture to: ${value?.name ?? 'none'}');
     if (_ceilingTexture != value) {
       _ceilingTexture = value;
       _clearCache();
@@ -205,7 +205,7 @@ class RoomParameters with ChangeNotifier {
   }
 
   set leftWallTexture(texture_model.Texture? value) {
-    debugPrint('Setting left wall texture to: ${value?.name ?? "none"}');
+    debugPrint('Setting left wall texture to: ${value?.name ?? 'none'}');
     if (_leftWallTexture != value) {
       _leftWallTexture = value;
       _clearCache();
@@ -214,7 +214,7 @@ class RoomParameters with ChangeNotifier {
   }
 
   set rightWallTexture(texture_model.Texture? value) {
-    debugPrint('Setting right wall texture to: ${value?.name ?? "none"}');
+    debugPrint('Setting right wall texture to: ${value?.name ?? 'none'}');
     if (_rightWallTexture != value) {
       _rightWallTexture = value;
       _clearCache();
@@ -223,7 +223,7 @@ class RoomParameters with ChangeNotifier {
   }
 
   set frontWallTexture(texture_model.Texture? value) {
-    debugPrint('Setting front wall texture to: ${value?.name ?? "none"}');
+    debugPrint('Setting front wall texture to: ${value?.name ?? 'none'}');
     if (_frontWallTexture != value) {
       _frontWallTexture = value;
       _clearCache();
@@ -232,7 +232,7 @@ class RoomParameters with ChangeNotifier {
   }
 
   set backWallTexture(texture_model.Texture? value) {
-    debugPrint('Setting back wall texture to: ${value?.name ?? "none"}');
+    debugPrint('Setting back wall texture to: ${value?.name ?? 'none'}');
     if (_backWallTexture != value) {
       _backWallTexture = value;
       _clearCache();

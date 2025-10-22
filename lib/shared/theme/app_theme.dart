@@ -12,7 +12,6 @@ class AppTheme {
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.black,
       elevation: 0,
-      shadowColor: Color(0x1A000000), // Мягкая черная с прозрачностью (10%)
       surfaceTintColor: Colors.transparent,
     ),
     colorScheme: ColorScheme.fromSeed(
@@ -177,10 +176,9 @@ class AppTheme {
     brightness: Brightness.dark,
     primaryColor: AppColors.primary,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.black,
+      backgroundColor: AppColors.darkscaffoldBackgroundColor,
       foregroundColor: AppColors.white,
       elevation: 0,
-      shadowColor: Color(0x1A000000), // Мягкая черная с прозрачностью (10%)
       surfaceTintColor: Colors.transparent,
     ),
     colorScheme: ColorScheme.fromSeed(
@@ -195,7 +193,7 @@ class AppTheme {
       surface: AppColors.black,
       onSurface: AppColors.white,
     ),
-    scaffoldBackgroundColor: AppColors.darkscaffoldBackgroundColor,
+    scaffoldBackgroundColor: AppColors.black,
     textTheme: TextTheme(
       displayLarge: TextStyle(
         fontFamily: AppFonts.primaryFont,

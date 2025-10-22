@@ -1,6 +1,6 @@
 class AppConstants {
   static const String appName = 'Omirtai Color';
-  static const String appVersion = '1.0.1';
+  static const String appVersion = '1.0.2';
   
   // API constants
   static const String baseUrl = 'https://api.example.com';

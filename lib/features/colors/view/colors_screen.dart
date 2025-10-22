@@ -37,7 +37,6 @@ class ColorsScreen extends StatelessWidget {
             const SizedBox(height: AppSpacing.l),
             Card(
               color: Theme.of(context).appBarTheme.backgroundColor,
-              elevation: 2,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppSpacing.radiusM),
               ),

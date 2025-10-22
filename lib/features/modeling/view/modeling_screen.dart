@@ -29,7 +29,7 @@ class ModelingScreenContent extends StatefulWidget {
 class _ModelingScreenContentState extends State<ModelingScreenContent> {
   bool _hasError = false;
   String? _errorMessage;
-  int _errorCount = 0;
+  final int _errorCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -147,10 +147,10 @@ class _ModelingScreenContentState extends State<ModelingScreenContent> {
             '${roomParams.hashCode}' // Добавляем hashCode для лучшего обновления
           ),
           src: roomParams.generatedModel,
-          alt: "3D Модель комнаты",
+          alt: '3D Модель комнаты',
           ar: true,
           arModes: ['scene-viewer', 'webxr', 'quick-look'],
-          environmentImage: "neutral",
+          environmentImage: 'neutral',
           exposure: 1.0,
           shadowIntensity: 1.0,
           shadowSoftness: 1.0,
@@ -159,9 +159,9 @@ class _ModelingScreenContentState extends State<ModelingScreenContent> {
           interactionPrompt: InteractionPrompt.auto,
           disableZoom: false,
           // Position the camera inside the room for interior viewing
-          cameraOrbit: "0deg 90deg 1.5m",
+          cameraOrbit: '0deg 90deg 1.5m',
           // Set camera target to center of the room
-          cameraTarget: "0m 1.5m 0m",
+          cameraTarget: '0m 1.5m 0m',
           // Enable smooth camera movements
           interpolationDecay: 10,
         );

@@ -164,7 +164,6 @@ class _ColorCollectionPageState extends State<ColorCollectionPage> {
       },
       child: Card(
         color: Theme.of(context).appBarTheme.backgroundColor,
-        elevation: 2,
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.s),
           child: Column(

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
+import 'dart:typed_data';
 
 void main() {
   // Create a minimal valid GLB file with a simple cube
@@ -93,7 +94,7 @@ void main() {
   
   // Create GLB header (12 bytes)
   final header = [
-    0x67, 0x6C, 0x54, 0x46, // "glTF" magic
+    0x67, 0x6C, 0x54, 0x46, // 'glTF' magic
     0x02, 0x00, 0x00, 0x00, // Version 2
     // Total length will be set later
   ];
@@ -105,7 +106,7 @@ void main() {
     (jsonLength >> 8) & 0xFF,
     (jsonLength >> 16) & 0xFF,
     (jsonLength >> 24) & 0xFF,
-    0x4A, 0x53, 0x4F, 0x4E // "JSON"
+    0x4A, 0x53, 0x4F, 0x4E // 'JSON'
   ];
   
   // Create binary chunk header (8 bytes)
@@ -115,7 +116,7 @@ void main() {
     (binLength >> 8) & 0xFF,
     (binLength >> 16) & 0xFF,
     (binLength >> 24) & 0xFF,
-    0x42, 0x49, 0x4E, 0x00 // "BIN" + null
+    0x42, 0x49, 0x4E, 0x00 // 'BIN' + null
   ];
   
   // Calculate total length
@@ -140,5 +141,7 @@ void main() {
   
   file.writeAsBytesSync(bytes.takeBytes());
   
+  // Use debugPrint instead of print for production code
+  // ignore: avoid_print
   print('Generated room.glb file with size: ${file.lengthSync()} bytes');
 }

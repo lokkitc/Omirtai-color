@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:app/core/models/texture.dart' as texture_model;
 import 'dart:io';
-import 'package:path/path.dart' as path;
 
 class RoomModelGenerator {
   // Cache for previously generated models
@@ -170,79 +169,79 @@ class RoomModelGenerator {
 
     // Создаем GLTF JSON
     final gltf = {
-      "asset": {
-        "version": "2.0"
+      'asset': {
+        'version': '2.0'
       },
-      "scenes": [
+      'scenes': [
         {
-          "nodes": [0, 1, 2, 3, 4, 5] // 6 узлов для 6 поверхностей
+          'nodes': [0, 1, 2, 3, 4, 5] // 6 узлов для 6 поверхностей
         }
       ],
-      "nodes": [
-        {"mesh": 0}, // Пол
-        {"mesh": 1}, // Потолок
-        {"mesh": 2}, // Передняя стена
-        {"mesh": 3}, // Задняя стена
-        {"mesh": 4}, // Левая стена
-        {"mesh": 5}, // Правая стена
+      'nodes': [
+        {'mesh': 0}, // Пол
+        {'mesh': 1}, // Потолок
+        {'mesh': 2}, // Передняя стена
+        {'mesh': 3}, // Задняя стена
+        {'mesh': 4}, // Левая стена
+        {'mesh': 5}, // Правая стена
       ],
-      "meshes": [
+      'meshes': [
         {
-          "primitives": [
+          'primitives': [
             {
-              "attributes": {"POSITION": 0, "TEXCOORD_0": 1},
-              "indices": 2,
-              "material": 0
+              'attributes': {'POSITION': 0, 'TEXCOORD_0': 1},
+              'indices': 2,
+              'material': 0
             }
           ]
         },
         {
-          "primitives": [
+          'primitives': [
             {
-              "attributes": {"POSITION": 3, "TEXCOORD_0": 4},
-              "indices": 5,
-              "material": 1
+              'attributes': {'POSITION': 3, 'TEXCOORD_0': 4},
+              'indices': 5,
+              'material': 1
             }
           ]
         },
         {
-          "primitives": [
+          'primitives': [
             {
-              "attributes": {"POSITION": 6, "TEXCOORD_0": 7},
-              "indices": 8,
-              "material": 2
+              'attributes': {'POSITION': 6, 'TEXCOORD_0': 7},
+              'indices': 8,
+              'material': 2
             }
           ]
         },
         {
-          "primitives": [
+          'primitives': [
             {
-              "attributes": {"POSITION": 9, "TEXCOORD_0": 10},
-              "indices": 11,
-              "material": 3
+              'attributes': {'POSITION': 9, 'TEXCOORD_0': 10},
+              'indices': 11,
+              'material': 3
             }
           ]
         },
         {
-          "primitives": [
+          'primitives': [
             {
-              "attributes": {"POSITION": 12, "TEXCOORD_0": 13},
-              "indices": 14,
-              "material": 4
+              'attributes': {'POSITION': 12, 'TEXCOORD_0': 13},
+              'indices': 14,
+              'material': 4
             }
           ]
         },
         {
-          "primitives": [
+          'primitives': [
             {
-              "attributes": {"POSITION": 15, "TEXCOORD_0": 16},
-              "indices": 17,
-              "material": 5
+              'attributes': {'POSITION': 15, 'TEXCOORD_0': 16},
+              'indices': 17,
+              'material': 5
             }
           ]
         }
       ],
-      "buffers": [
+      'buffers': [
         // Буферы для вершин и индексов каждой поверхности
         _createBufferFromFloat32List(floorVertices),
         _createBufferFromFloat32List(floorUvs),
@@ -265,187 +264,187 @@ class RoomModelGenerator {
         // Добавляем буферы для текстур
         ..._createTextureBuffers(textures),
       ],
-      "bufferViews": [
-        {"buffer": 0, "byteOffset": 0, "byteLength": floorVertices.length * 4},
-        {"buffer": 1, "byteOffset": 0, "byteLength": floorUvs.length * 4},
-        {"buffer": 2, "byteOffset": 0, "byteLength": indices.length * 2},
-        {"buffer": 3, "byteOffset": 0, "byteLength": ceilingVertices.length * 4},
-        {"buffer": 4, "byteOffset": 0, "byteLength": ceilingUvs.length * 4},
-        {"buffer": 5, "byteOffset": 0, "byteLength": indices.length * 2},
-        {"buffer": 6, "byteOffset": 0, "byteLength": frontWallVertices.length * 4},
-        {"buffer": 7, "byteOffset": 0, "byteLength": frontWallUvs.length * 4},
-        {"buffer": 8, "byteOffset": 0, "byteLength": indices.length * 2},
-        {"buffer": 9, "byteOffset": 0, "byteLength": backWallVertices.length * 4},
-        {"buffer": 10, "byteOffset": 0, "byteLength": backWallUvs.length * 4},
-        {"buffer": 11, "byteOffset": 0, "byteLength": indices.length * 2},
-        {"buffer": 12, "byteOffset": 0, "byteLength": leftWallVertices.length * 4},
-        {"buffer": 13, "byteOffset": 0, "byteLength": leftWallUvs.length * 4},
-        {"buffer": 14, "byteOffset": 0, "byteLength": indices.length * 2},
-        {"buffer": 15, "byteOffset": 0, "byteLength": rightWallVertices.length * 4},
-        {"buffer": 16, "byteOffset": 0, "byteLength": rightWallUvs.length * 4},
-        {"buffer": 17, "byteOffset": 0, "byteLength": indices.length * 2},
+      'bufferViews': [
+        {'buffer': 0, 'byteOffset': 0, 'byteLength': floorVertices.length * 4},
+        {'buffer': 1, 'byteOffset': 0, 'byteLength': floorUvs.length * 4},
+        {'buffer': 2, 'byteOffset': 0, 'byteLength': indices.length * 2},
+        {'buffer': 3, 'byteOffset': 0, 'byteLength': ceilingVertices.length * 4},
+        {'buffer': 4, 'byteOffset': 0, 'byteLength': ceilingUvs.length * 4},
+        {'buffer': 5, 'byteOffset': 0, 'byteLength': indices.length * 2},
+        {'buffer': 6, 'byteOffset': 0, 'byteLength': frontWallVertices.length * 4},
+        {'buffer': 7, 'byteOffset': 0, 'byteLength': frontWallUvs.length * 4},
+        {'buffer': 8, 'byteOffset': 0, 'byteLength': indices.length * 2},
+        {'buffer': 9, 'byteOffset': 0, 'byteLength': backWallVertices.length * 4},
+        {'buffer': 10, 'byteOffset': 0, 'byteLength': backWallUvs.length * 4},
+        {'buffer': 11, 'byteOffset': 0, 'byteLength': indices.length * 2},
+        {'buffer': 12, 'byteOffset': 0, 'byteLength': leftWallVertices.length * 4},
+        {'buffer': 13, 'byteOffset': 0, 'byteLength': leftWallUvs.length * 4},
+        {'buffer': 14, 'byteOffset': 0, 'byteLength': indices.length * 2},
+        {'buffer': 15, 'byteOffset': 0, 'byteLength': rightWallVertices.length * 4},
+        {'buffer': 16, 'byteOffset': 0, 'byteLength': rightWallUvs.length * 4},
+        {'buffer': 17, 'byteOffset': 0, 'byteLength': indices.length * 2},
         // Добавляем bufferViews для текстур
         ..._createTextureBufferViews(textures, 18), // Начинаем с индекса 18
       ],
-      "accessors": [
+      'accessors': [
         // Аксессоры для вершин пола
         {
-          "bufferView": 0,
-          "byteOffset": 0,
-          "componentType": 5126, // FLOAT
-          "count": floorVertices.length ~/ 3,
-          "type": "VEC3",
-          "max": [width / 2, 0, depth / 2],
-          "min": [-width / 2, 0, -depth / 2]
+          'bufferView': 0,
+          'byteOffset': 0,
+          'componentType': 5126, // FLOAT
+          'count': floorVertices.length ~/ 3,
+          'type': 'VEC3',
+          'max': [width / 2, 0, depth / 2],
+          'min': [-width / 2, 0, -depth / 2]
         },
         {
-          "bufferView": 1,
-          "byteOffset": 0,
-          "componentType": 5126, // FLOAT
-          "count": floorUvs.length ~/ 2,
-          "type": "VEC2"
+          'bufferView': 1,
+          'byteOffset': 0,
+          'componentType': 5126, // FLOAT
+          'count': floorUvs.length ~/ 2,
+          'type': 'VEC2'
         },
         {
-          "bufferView": 2,
-          "byteOffset": 0,
-          "componentType": 5123, // UNSIGNED_SHORT
-          "count": indices.length,
-          "type": "SCALAR"
+          'bufferView': 2,
+          'byteOffset': 0,
+          'componentType': 5123, // UNSIGNED_SHORT
+          'count': indices.length,
+          'type': 'SCALAR'
         },
         // Аксессоры для вершин потолка
         {
-          "bufferView": 3,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": ceilingVertices.length ~/ 3,
-          "type": "VEC3",
-          "max": [width / 2, height, depth / 2],
-          "min": [-width / 2, height, -depth / 2]
+          'bufferView': 3,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': ceilingVertices.length ~/ 3,
+          'type': 'VEC3',
+          'max': [width / 2, height, depth / 2],
+          'min': [-width / 2, height, -depth / 2]
         },
         {
-          "bufferView": 4,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": ceilingUvs.length ~/ 2,
-          "type": "VEC2"
+          'bufferView': 4,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': ceilingUvs.length ~/ 2,
+          'type': 'VEC2'
         },
         {
-          "bufferView": 5,
-          "byteOffset": 0,
-          "componentType": 5123,
-          "count": indices.length,
-          "type": "SCALAR"
+          'bufferView': 5,
+          'byteOffset': 0,
+          'componentType': 5123,
+          'count': indices.length,
+          'type': 'SCALAR'
         },
         // Аксессоры для вершин передней стены
         {
-          "bufferView": 6,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": frontWallVertices.length ~/ 3,
-          "type": "VEC3",
-          "max": [width / 2, height, -depth / 2],
-          "min": [-width / 2, 0, -depth / 2]
+          'bufferView': 6,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': frontWallVertices.length ~/ 3,
+          'type': 'VEC3',
+          'max': [width / 2, height, -depth / 2],
+          'min': [-width / 2, 0, -depth / 2]
         },
         {
-          "bufferView": 7,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": frontWallUvs.length ~/ 2,
-          "type": "VEC2"
+          'bufferView': 7,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': frontWallUvs.length ~/ 2,
+          'type': 'VEC2'
         },
         {
-          "bufferView": 8,
-          "byteOffset": 0,
-          "componentType": 5123,
-          "count": indices.length,
-          "type": "SCALAR"
+          'bufferView': 8,
+          'byteOffset': 0,
+          'componentType': 5123,
+          'count': indices.length,
+          'type': 'SCALAR'
         },
         // Аксессоры для вершин задней стены
         {
-          "bufferView": 9,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": backWallVertices.length ~/ 3,
-          "type": "VEC3",
-          "max": [width / 2, height, depth / 2],
-          "min": [-width / 2, 0, depth / 2]
+          'bufferView': 9,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': backWallVertices.length ~/ 3,
+          'type': 'VEC3',
+          'max': [width / 2, height, depth / 2],
+          'min': [-width / 2, 0, depth / 2]
         },
         {
-          "bufferView": 10,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": backWallUvs.length ~/ 2,
-          "type": "VEC2"
+          'bufferView': 10,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': backWallUvs.length ~/ 2,
+          'type': 'VEC2'
         },
         {
-          "bufferView": 11,
-          "byteOffset": 0,
-          "componentType": 5123,
-          "count": indices.length,
-          "type": "SCALAR"
+          'bufferView': 11,
+          'byteOffset': 0,
+          'componentType': 5123,
+          'count': indices.length,
+          'type': 'SCALAR'
         },
         // Аксессоры для вершин левой стены
         {
-          "bufferView": 12,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": leftWallVertices.length ~/ 3,
-          "type": "VEC3",
-          "max": [-width / 2, height, depth / 2],
-          "min": [-width / 2, 0, -depth / 2]
+          'bufferView': 12,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': leftWallVertices.length ~/ 3,
+          'type': 'VEC3',
+          'max': [-width / 2, height, depth / 2],
+          'min': [-width / 2, 0, -depth / 2]
         },
         {
-          "bufferView": 13,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": leftWallUvs.length ~/ 2,
-          "type": "VEC2"
+          'bufferView': 13,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': leftWallUvs.length ~/ 2,
+          'type': 'VEC2'
         },
         {
-          "bufferView": 14,
-          "byteOffset": 0,
-          "componentType": 5123,
-          "count": indices.length,
-          "type": "SCALAR"
+          'bufferView': 14,
+          'byteOffset': 0,
+          'componentType': 5123,
+          'count': indices.length,
+          'type': 'SCALAR'
         },
         // Аксессоры для вершин правой стены
         {
-          "bufferView": 15,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": rightWallVertices.length ~/ 3,
-          "type": "VEC3",
-          "max": [width / 2, height, depth / 2],
-          "min": [width / 2, 0, -depth / 2]
+          'bufferView': 15,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': rightWallVertices.length ~/ 3,
+          'type': 'VEC3',
+          'max': [width / 2, height, depth / 2],
+          'min': [width / 2, 0, -depth / 2]
         },
         {
-          "bufferView": 16,
-          "byteOffset": 0,
-          "componentType": 5126,
-          "count": rightWallUvs.length ~/ 2,
-          "type": "VEC2"
+          'bufferView': 16,
+          'byteOffset': 0,
+          'componentType': 5126,
+          'count': rightWallUvs.length ~/ 2,
+          'type': 'VEC2'
         },
         {
-          "bufferView": 17,
-          "byteOffset": 0,
-          "componentType": 5123,
-          "count": indices.length,
-          "type": "SCALAR"
+          'bufferView': 17,
+          'byteOffset': 0,
+          'componentType': 5123,
+          'count': indices.length,
+          'type': 'SCALAR'
         },
         // Добавляем аксессоры для текстур
         ..._createTextureAccessors(textures, 18), // Начинаем с индекса 18
       ],
-      "materials": _createMaterials([
-        {"pbrMetallicRoughness": {"baseColorFactor": [...floorColorRgb, 1.0]}, "name": "Floor"},
-        {"pbrMetallicRoughness": {"baseColorFactor": [...ceilingColorRgb, 1.0]}, "name": "Ceiling"},
-        {"pbrMetallicRoughness": {"baseColorFactor": [...frontWallColorRgb, 1.0]}, "name": "FrontWall"},
-        {"pbrMetallicRoughness": {"baseColorFactor": [...backWallColorRgb, 1.0]}, "name": "BackWall"},
-        {"pbrMetallicRoughness": {"baseColorFactor": [...leftWallColorRgb, 1.0]}, "name": "LeftWall"},
-        {"pbrMetallicRoughness": {"baseColorFactor": [...rightWallColorRgb, 1.0]}, "name": "RightWall"},
+      'materials': _createMaterials([
+        {'pbrMetallicRoughness': {'baseColorFactor': [...floorColorRgb, 1.0]}, 'name': 'Floor'},
+        {'pbrMetallicRoughness': {'baseColorFactor': [...ceilingColorRgb, 1.0]}, 'name': 'Ceiling'},
+        {'pbrMetallicRoughness': {'baseColorFactor': [...frontWallColorRgb, 1.0]}, 'name': 'FrontWall'},
+        {'pbrMetallicRoughness': {'baseColorFactor': [...backWallColorRgb, 1.0]}, 'name': 'BackWall'},
+        {'pbrMetallicRoughness': {'baseColorFactor': [...leftWallColorRgb, 1.0]}, 'name': 'LeftWall'},
+        {'pbrMetallicRoughness': {'baseColorFactor': [...rightWallColorRgb, 1.0]}, 'name': 'RightWall'},
       ], textures),
-      "textures": _createTextures(textures),
-      "images": _createImages(textures),
-      "samplers": _createSamplers(textures),
+      'textures': _createTextures(textures),
+      'images': _createImages(textures),
+      'samplers': _createSamplers(textures),
     };
 
     // Конвертируем в JSON и затем в data URI
@@ -478,8 +477,8 @@ class RoomModelGenerator {
     final byteData = Uint8List.view(data.buffer);
     final base64 = base64Encode(byteData);
     return {
-      "uri": "data:application/octet-stream;base64,$base64",
-      "byteLength": byteData.length
+      'uri': 'data:application/octet-stream;base64,$base64',
+      'byteLength': byteData.length
     };
   }
 
@@ -488,8 +487,8 @@ class RoomModelGenerator {
     final byteData = Uint8List.view(data.buffer);
     final base64 = base64Encode(byteData);
     return {
-      "uri": "data:application/octet-stream;base64,$base64",
-      "byteLength": byteData.length
+      'uri': 'data:application/octet-stream;base64,$base64',
+      'byteLength': byteData.length
     };
   }
 
@@ -506,28 +505,28 @@ class RoomModelGenerator {
             final bytes = file.readAsBytesSync();
             final base64 = base64Encode(bytes);
             textureBuffers.add({
-              "uri": "data:image/png;base64,$base64",
-              "byteLength": bytes.length,
+              'uri': 'data:image/png;base64,$base64',
+              'byteLength': bytes.length,
             });
           } else {
             // Если файл не найден, добавляем пустой буфер
             textureBuffers.add({
-              "uri": "data:application/octet-stream;base64,",
-              "byteLength": 0,
+              'uri': 'data:application/octet-stream;base64,',
+              'byteLength': 0,
             });
           }
         } catch (e) {
           // В случае ошибки добавляем пустой буфер
           textureBuffers.add({
-            "uri": "data:application/octet-stream;base64,",
-            "byteLength": 0,
+            'uri': 'data:application/octet-stream;base64,',
+            'byteLength': 0,
           });
         }
       } else {
         // Для отсутствующих текстур добавляем пустой буфер
         textureBuffers.add({
-          "uri": "data:application/octet-stream;base64,",
-          "byteLength": 0,
+          'uri': 'data:application/octet-stream;base64,',
+          'byteLength': 0,
         });
       }
     }
@@ -542,15 +541,15 @@ class RoomModelGenerator {
     for (var i = 0; i < textures.length; i++) {
       if (textures[i] != null) {
         textureBufferViews.add({
-          "buffer": startIndex + i,
-          "byteOffset": 0,
-          "byteLength": 0, // Будет обновлено при создании буфера
+          'buffer': startIndex + i,
+          'byteOffset': 0,
+          'byteLength': 0, // Будет обновлено при создании буфера
         });
       } else {
         textureBufferViews.add({
-          "buffer": startIndex + i,
-          "byteOffset": 0,
-          "byteLength": 0,
+          'buffer': startIndex + i,
+          'byteOffset': 0,
+          'byteLength': 0,
         });
       }
     }
@@ -565,19 +564,19 @@ class RoomModelGenerator {
     for (var i = 0; i < textures.length; i++) {
       if (textures[i] != null) {
         textureAccessors.add({
-          "bufferView": startIndex + i,
-          "byteOffset": 0,
-          "componentType": 5121, // UNSIGNED_BYTE
-          "count": 0, // Будет обновлено при создании буфера
-          "type": "SCALAR",
+          'bufferView': startIndex + i,
+          'byteOffset': 0,
+          'componentType': 5121, // UNSIGNED_BYTE
+          'count': 0, // Будет обновлено при создании буфера
+          'type': 'SCALAR',
         });
       } else {
         textureAccessors.add({
-          "bufferView": startIndex + i,
-          "byteOffset": 0,
-          "componentType": 5121, // UNSIGNED_BYTE
-          "count": 0,
-          "type": "SCALAR",
+          'bufferView': startIndex + i,
+          'byteOffset': 0,
+          'componentType': 5121, // UNSIGNED_BYTE
+          'count': 0,
+          'type': 'SCALAR',
         });
       }
     }
@@ -594,12 +593,12 @@ class RoomModelGenerator {
       
       // Если есть текстура для этой поверхности, добавляем ее к материалу
       if (textures[i] != null) {
-        final pbr = Map<String, dynamic>.from(material["pbrMetallicRoughness"] as Map);
-        pbr["baseColorTexture"] = {
-          "index": i,
-          "texCoord": 0
+        final pbr = Map<String, dynamic>.from(material['pbrMetallicRoughness'] as Map);
+        pbr['baseColorTexture'] = {
+          'index': i,
+          'texCoord': 0
         };
-        material["pbrMetallicRoughness"] = pbr;
+        material['pbrMetallicRoughness'] = pbr;
       }
       
       materials.add(material);
@@ -615,8 +614,8 @@ class RoomModelGenerator {
     for (var i = 0; i < textures.length; i++) {
       if (textures[i] != null) {
         gltfTextures.add({
-          "sampler": i,
-          "source": i,
+          'sampler': i,
+          'source': i,
         });
       } else {
         // Добавляем пустую текстуру для сохранения индексов
@@ -634,7 +633,7 @@ class RoomModelGenerator {
     for (var i = 0; i < textures.length; i++) {
       if (textures[i] != null) {
         images.add({
-          "uri": textures[i]!.assetPath,
+          'uri': textures[i]!.assetPath,
         });
       } else {
         // Добавляем пустое изображение для сохранения индексов
@@ -652,10 +651,10 @@ class RoomModelGenerator {
     for (var i = 0; i < textures.length; i++) {
       if (textures[i] != null) {
         samplers.add({
-          "magFilter": 9729, // LINEAR
-          "minFilter": 9987, // LINEAR_MIPMAP_LINEAR
-          "wrapS": 10497,    // REPEAT
-          "wrapT": 10497,    // REPEAT
+          'magFilter': 9729, // LINEAR
+          'minFilter': 9987, // LINEAR_MIPMAP_LINEAR
+          'wrapS': 10497,    // REPEAT
+          'wrapT': 10497,    // REPEAT
         });
       } else {
         // Добавляем пустой сэмплер для сохранения индексов
