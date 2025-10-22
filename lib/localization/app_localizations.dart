@@ -148,6 +148,33 @@ class AppLocalizations {
           LocalizationKeys.modelLoadingErrorDescription: 'Пожалуйста, проверьте подключение к интернету и попробуйте снова',
           LocalizationKeys.retryWithAsset: 'Попробовать с локальным файлом',
           LocalizationKeys.usingAssetModelInfo: 'Используется локальная модель',
+          LocalizationKeys.roomModelAlt: '3D Модель комнаты',
+          LocalizationKeys.errorLoadingRalColors: 'Ошибка загрузки цветов RAL',
+          LocalizationKeys.noneTexture: 'Нет',
+          LocalizationKeys.predefinedColorsTitle: 'Предопределенные цвета для выбора',
+          LocalizationKeys.errorLoadingColors: 'Ошибка загрузки цветов: {error}',
+          LocalizationKeys.englishLanguage: 'English',
+          LocalizationKeys.russianLanguage: 'Русский',
+          LocalizationKeys.kazakhLanguage: 'Қазақша',
+          LocalizationKeys.colorCodeLabel: 'Код',
+          LocalizationKeys.colorNameLabel: 'Название',
+          LocalizationKeys.colorGroupLabel: 'Группа',
+          LocalizationKeys.colorCollectionLabel: 'Коллекция',
+          LocalizationKeys.colorValuesLabel: 'Значения',
+          LocalizationKeys.hexValueLabel: 'HEX',
+          LocalizationKeys.rgbValueLabel: 'RGB',
+          LocalizationKeys.rgbaValueLabel: 'RGBA',
+          LocalizationKeys.hslValueLabel: 'HSL',
+          LocalizationKeys.hsvValueLabel: 'HSV',
+          LocalizationKeys.xyzValueLabel: 'XYZ',
+          LocalizationKeys.labValueLabel: 'LAB',
+          // Color value formats
+          LocalizationKeys.rgbFormat: 'R: {r}, G: {g}, B: {b}',
+          LocalizationKeys.rgbaFormat: 'R: {r}, G: {g}, B: {b}, A: {a}',
+          LocalizationKeys.hslFormat: 'H: {h}°, S: {s}%, L: {l}%',
+          LocalizationKeys.hsvFormat: 'H: {h}°, S: {s}%, V: {v}%',
+          LocalizationKeys.xyzFormat: 'X: {x}, Y: {y}, Z: {z}',
+          LocalizationKeys.labFormat: 'L: {l}, A: {a}, B: {b}',
         };
       case 'kk': // Kazakh translations
         return {
@@ -271,6 +298,33 @@ class AppLocalizations {
           LocalizationKeys.modelLoadingErrorDescription: 'Интернет байланысын тексеріп, қайталаңыз',
           LocalizationKeys.retryWithAsset: 'Жергілікті файлмен қайталау',
           LocalizationKeys.usingAssetModelInfo: 'Жергілікті модель қолданылуда',
+          LocalizationKeys.roomModelAlt: '3D Бөлме моделі',
+          LocalizationKeys.errorLoadingRalColors: 'RAL түстерін жүктеу қатесі',
+          LocalizationKeys.noneTexture: 'Жоқ',
+          LocalizationKeys.predefinedColorsTitle: 'Таңдау үшін алдын ала анықталған түстер',
+          LocalizationKeys.errorLoadingColors: 'Түстерді жүктеу қатесі: {error}',
+          LocalizationKeys.englishLanguage: 'English',
+          LocalizationKeys.russianLanguage: 'Русский',
+          LocalizationKeys.kazakhLanguage: 'Қазақша',
+          LocalizationKeys.colorCodeLabel: 'Код',
+          LocalizationKeys.colorNameLabel: 'Атауы',
+          LocalizationKeys.colorGroupLabel: 'Топ',
+          LocalizationKeys.colorCollectionLabel: 'Жинақ',
+          LocalizationKeys.colorValuesLabel: 'Мәндер',
+          LocalizationKeys.hexValueLabel: 'HEX',
+          LocalizationKeys.rgbValueLabel: 'RGB',
+          LocalizationKeys.rgbaValueLabel: 'RGBA',
+          LocalizationKeys.hslValueLabel: 'HSL',
+          LocalizationKeys.hsvValueLabel: 'HSV',
+          LocalizationKeys.xyzValueLabel: 'XYZ',
+          LocalizationKeys.labValueLabel: 'LAB',
+          // Color value formats
+          LocalizationKeys.rgbFormat: 'R: {r}, G: {g}, B: {b}',
+          LocalizationKeys.rgbaFormat: 'R: {r}, G: {g}, B: {b}, A: {a}',
+          LocalizationKeys.hslFormat: 'H: {h}°, S: {s}%, L: {l}%',
+          LocalizationKeys.hsvFormat: 'H: {h}°, S: {s}%, V: {v}%',
+          LocalizationKeys.xyzFormat: 'X: {x}, Y: {y}, Z: {z}',
+          LocalizationKeys.labFormat: 'L: {l}, A: {a}, B: {b}',
         };
       case 'en':
       default:
@@ -395,6 +449,33 @@ class AppLocalizations {
           LocalizationKeys.modelLoadingErrorDescription: 'Please check your internet connection and try again',
           LocalizationKeys.retryWithAsset: 'Retry with local file',
           LocalizationKeys.usingAssetModelInfo: 'Using local model',
+          LocalizationKeys.roomModelAlt: '3D Room Model',
+          LocalizationKeys.errorLoadingRalColors: 'Error loading RAL colors',
+          LocalizationKeys.noneTexture: 'None',
+          LocalizationKeys.predefinedColorsTitle: 'Predefined colors for selection',
+          LocalizationKeys.errorLoadingColors: 'Failed to load colors: {error}',
+          LocalizationKeys.englishLanguage: 'English',
+          LocalizationKeys.russianLanguage: 'Русский',
+          LocalizationKeys.kazakhLanguage: 'Қазақша',
+          LocalizationKeys.colorCodeLabel: 'Code',
+          LocalizationKeys.colorNameLabel: 'Name',
+          LocalizationKeys.colorGroupLabel: 'Group',
+          LocalizationKeys.colorCollectionLabel: 'Collection',
+          LocalizationKeys.colorValuesLabel: 'Values',
+          LocalizationKeys.hexValueLabel: 'HEX',
+          LocalizationKeys.rgbValueLabel: 'RGB',
+          LocalizationKeys.rgbaValueLabel: 'RGBA',
+          LocalizationKeys.hslValueLabel: 'HSL',
+          LocalizationKeys.hsvValueLabel: 'HSV',
+          LocalizationKeys.xyzValueLabel: 'XYZ',
+          LocalizationKeys.labValueLabel: 'LAB',
+          // Color value formats
+          LocalizationKeys.rgbFormat: 'R: {r}, G: {g}, B: {b}',
+          LocalizationKeys.rgbaFormat: 'R: {r}, G: {g}, B: {b}, A: {a}',
+          LocalizationKeys.hslFormat: 'H: {h}°, S: {s}%, L: {l}%',
+          LocalizationKeys.hsvFormat: 'H: {h}°, S: {s}%, V: {v}%',
+          LocalizationKeys.xyzFormat: 'X: {x}, Y: {y}, Z: {z}',
+          LocalizationKeys.labFormat: 'L: {l}, A: {a}, B: {b}',
         };
     }
   }
@@ -423,3 +504,7 @@ class _AppLocalizationsDelegate
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
+
+
+
+

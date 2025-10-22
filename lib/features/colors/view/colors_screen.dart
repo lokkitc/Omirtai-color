@@ -48,7 +48,7 @@ class ColorsScreen extends StatelessWidget {
                   children: [
                     
                     Text(
-                      'RAL-Colors',
+                      localizations.translate('colorCollection'),
                       style: TextStyle(
                         fontSize: AppFonts.titleLarge,
                         fontWeight: AppFonts.bold,
@@ -64,7 +64,7 @@ class ColorsScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: const Text('Classic'),
+                      child: Text(localizations.translate('classic')),
                     ),
                   ],
                 ),

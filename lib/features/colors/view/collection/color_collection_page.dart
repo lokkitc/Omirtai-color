@@ -27,7 +27,15 @@ class _ColorCollectionPageState extends State<ColorCollectionPage> {
   @override
   void initState() {
     super.initState();
-    _loadColors();
+    // We'll load colors in didChangeDependencies since we need context for localization
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_isLoading && _error.isEmpty) {
+      _loadColors(context);
+    }
   }
 
   @override
@@ -36,7 +44,8 @@ class _ColorCollectionPageState extends State<ColorCollectionPage> {
     super.dispose();
   }
 
-  Future<void> _loadColors() async {
+  Future<void> _loadColors(BuildContext context) async {
+    final localizations = AppLocalizations.of(context);
     setState(() {
       _isLoading = true;
       _error = '';
@@ -51,7 +60,7 @@ class _ColorCollectionPageState extends State<ColorCollectionPage> {
       });
     } catch (e) {
       setState(() {
-        _error = 'Failed to load colors: $e';
+        _error = localizations.translate('error_loading_colors').replaceAll('{error}', e.toString());
         _isLoading = false;
       });
     }
@@ -97,7 +106,7 @@ class _ColorCollectionPageState extends State<ColorCollectionPage> {
                       Text(_error, style: const TextStyle(color: AppColors.error)),
                       const SizedBox(height: AppSpacing.m),
                       ElevatedButton(
-                        onPressed: _loadColors,
+                        onPressed: () => _loadColors(context),
                         child: Text(localizations.translate(LocalizationKeys.retry)),
                       ),
                     ],

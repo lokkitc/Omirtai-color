@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app/localization/app_localizations.dart';
 import 'package:app/core/constants/app_spacing.dart';
+import 'package:app/core/constants/app_colors.dart';
 import 'package:app/core/services/ral_color_service.dart';
 import 'package:app/core/models/ral_color.dart';
 import 'package:app/core/models/texture.dart' as texture_model;
@@ -347,7 +348,12 @@ class _ColorPickerState extends State<ColorPicker> {
               }
               
               if (snapshot.hasError || !snapshot.hasData) {
-                return const Center(child: Text('Error loading RAL colors'));
+                return Center(
+                  child: Text(
+                    AppLocalizations.of(context).translate('error_loading_ral_colors'), // Changed from hardcoded 'Error loading RAL colors'
+                    style: const TextStyle(color: AppColors.error),
+                  ),
+                );
               }
               
               final ralColors = snapshot.data!;
@@ -455,7 +461,7 @@ class _TexturePickerState extends State<TexturePicker> {
       children: [
         // None option
         ListTile(
-          title: const Text('None'),
+          title: Text(AppLocalizations.of(context).translate('none_texture')), // Changed from hardcoded 'None'
           leading: Container(
             width: 40,
             height: 40,

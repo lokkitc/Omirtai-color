@@ -147,7 +147,7 @@ class _ModelingScreenContentState extends State<ModelingScreenContent> {
             '${roomParams.hashCode}' // Добавляем hashCode для лучшего обновления
           ),
           src: roomParams.generatedModel,
-          alt: '3D Модель комнаты',
+          alt: localizations.translate('room_model_alt'),
           ar: true,
           arModes: ['scene-viewer', 'webxr', 'quick-look'],
           environmentImage: 'neutral',

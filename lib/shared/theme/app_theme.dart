@@ -14,6 +14,9 @@ class AppTheme {
       elevation: 0,
       surfaceTintColor: Colors.transparent,
     ),
+    cardTheme: CardThemeData(
+      elevation: 0,
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primary,
       primary: AppColors.primary,
@@ -180,6 +183,9 @@ class AppTheme {
       foregroundColor: AppColors.white,
       elevation: 0,
       surfaceTintColor: Colors.transparent,
+    ),
+    cardTheme: CardThemeData(
+      elevation: 0,
     ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primary,

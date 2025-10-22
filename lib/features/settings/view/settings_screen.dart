@@ -252,7 +252,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Column(
       children: [
         RadioListTile<Locale>(
-          title: const Text('English'),
+          title: Text(localizations.translate('english_language')),
           secondary: const Icon(Icons.language),
           value: const Locale('en'),
           groupValue: _selectedLocale,
@@ -269,7 +269,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         RadioListTile<Locale>(
-          title: const Text('Русский'),
+          title: Text(localizations.translate('russian_language')),
           secondary: const Icon(Icons.language),
           value: const Locale('ru'),
           groupValue: _selectedLocale,
@@ -286,7 +286,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         RadioListTile<Locale>(
-          title: const Text('Қазақша'), // Kazakh
+          title: Text(localizations.translate('kazakh_language')),
           secondary: const Icon(Icons.language),
           value: const Locale('kk'), // Kazakh locale
           groupValue: _selectedLocale,

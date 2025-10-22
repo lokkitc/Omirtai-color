@@ -118,6 +118,42 @@ class LocalizationKeys {
   static const String xyzValue = 'xyz_value';
   static const String labValue = 'lab_value';
   static const String searchHint = 'search_hint';
+  static const String colorCollectionTitle = 'color_collection_title';
+  static const String classic = 'classic';
+  
+  // Modeling
+  static const String roomModelAlt = 'room_model_alt';
+  static const String errorLoadingRalColors = 'error_loading_ral_colors';
+  static const String noneTexture = 'none_texture';
+  static const String predefinedColorsTitle = 'predefined_colors_title';
+  static const String errorLoadingColors = 'error_loading_colors';
+  
+  // Settings
+  static const String englishLanguage = 'english_language';
+  static const String russianLanguage = 'russian_language';
+  static const String kazakhLanguage = 'kazakh_language';
+  
+  // Color details
+  static const String colorCodeLabel = 'color_code_label';
+  static const String colorNameLabel = 'color_name_label';
+  static const String colorGroupLabel = 'color_group_label';
+  static const String colorCollectionLabel = 'color_collection_label';
+  static const String colorValuesLabel = 'color_values_label';
+  static const String hexValueLabel = 'hex_value_label';
+  static const String rgbValueLabel = 'rgb_value_label';
+  static const String rgbaValueLabel = 'rgba_value_label';
+  static const String hslValueLabel = 'hsl_value_label';
+  static const String hsvValueLabel = 'hsv_value_label';
+  static const String xyzValueLabel = 'xyz_value_label';
+  static const String labValueLabel = 'lab_value_label';
+  
+  // Color value formats
+  static const String rgbFormat = 'rgb_format';
+  static const String rgbaFormat = 'rgba_format';
+  static const String hslFormat = 'hsl_format';
+  static const String hsvFormat = 'hsv_format';
+  static const String xyzFormat = 'xyz_format';
+  static const String labFormat = 'lab_format';
   
   // Modeling
   static const String roomSettings = 'room_settings';
