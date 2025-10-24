@@ -12,6 +12,7 @@ import 'package:app/features/calculators/view/calculators_screen.dart';
 import 'package:app/features/settings/view/settings_screen.dart';
 import 'package:app/features/modeling/view/modeling_screen.dart';
 import 'package:app/core/services/locale_service.dart';
+import 'package:app/core/constants/localization_keys.dart'; // Add this import
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -58,11 +59,11 @@ class _MainScreenState extends State<MainScreen> {
         final localizations = AppLocalizations.of(context);
         
         final screenTitles = [
-          localizations.translate('home'),
-          localizations.translate('colors'),
-          localizations.translate('calculators'),
-          localizations.translate('modelingScreen'),
-          localizations.translate('settings'),
+          localizations.translate(LocalizationKeys.home),
+          localizations.translate(LocalizationKeys.colors),
+          localizations.translate(LocalizationKeys.calculators),
+          localizations.translate(LocalizationKeys.modelingScreen),
+          localizations.translate(LocalizationKeys.settings),
         ];
 
         return Scaffold(
@@ -101,27 +102,27 @@ class _MainScreenState extends State<MainScreen> {
                     BottomNavigationBarItem(
                       icon: const Icon(Icons.home_outlined),
                       activeIcon: const Icon(Icons.home),
-                      label: localizations.translate('home'),
+                      label: localizations.translate(LocalizationKeys.home),
                     ),
                     BottomNavigationBarItem(
                       icon: const Icon(Icons.color_lens_outlined),
                       activeIcon: const Icon(Icons.color_lens),
-                      label: localizations.translate('colors'),
+                      label: localizations.translate(LocalizationKeys.colors),
                     ),
                     BottomNavigationBarItem(
                       icon: const Icon(Icons.calculate_outlined),
                       activeIcon: const Icon(Icons.calculate),
-                      label: localizations.translate('calculators'),
+                      label: localizations.translate(LocalizationKeys.calculators),
                     ),
                     BottomNavigationBarItem(
                       icon: const Icon(Icons.view_in_ar_outlined),
                       activeIcon: const Icon(Icons.view_in_ar),
-                      label: localizations.translate('modelingScreen'),
+                      label: localizations.translate(LocalizationKeys.modelingScreen),
                     ),
                     BottomNavigationBarItem(
                       icon: const Icon(Icons.settings_outlined),
                       activeIcon: const Icon(Icons.settings),
-                      label: localizations.translate('settings'),
+                      label: localizations.translate(LocalizationKeys.settings),
                     ),
                   ],
                 )
@@ -155,7 +156,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 const SizedBox(height: AppSpacing.s),
                 Text(
-                  localizations.translate('appTitle'), // Используем локализованный заголовок
+                  localizations.translate(LocalizationKeys.appTitle), // Используем локализованный заголовок
                   style: TextStyle(
                     color: Theme.of(context).appBarTheme.foregroundColor,
                     fontSize: 22,
@@ -163,7 +164,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 Text(
-                  localizations.translate('navigation'),
+                  localizations.translate(LocalizationKeys.navigation),
                   style: TextStyle(
                     color: Theme.of(context).appBarTheme.foregroundColor?.withAlpha(204), // 80% opacity
                     fontSize: AppFonts.bodySmall
@@ -179,7 +180,7 @@ class _MainScreenState extends State<MainScreen> {
                 const SizedBox(height: AppSpacing.s),
                 ListTile(
                   leading: const Icon(Icons.home),
-                  title: Text(localizations.translate('home')),
+                  title: Text(localizations.translate(LocalizationKeys.home)),
                   selected: _currentIndex == 0,
                   selectedTileColor: Theme.of(context).primaryColor.withAlpha(25), // 10% opacity
                   onTap: () {
@@ -196,7 +197,7 @@ class _MainScreenState extends State<MainScreen> {
                 const SizedBox(height: AppSpacing.s),
                 ListTile(
                   leading: const Icon(Icons.color_lens),
-                  title: Text(localizations.translate('colors')),
+                  title: Text(localizations.translate(LocalizationKeys.colors)),
                   selected: _currentIndex == 1,
                   selectedTileColor: Theme.of(context).primaryColor.withAlpha(25), // 10% opacity
                   onTap: () {
@@ -213,7 +214,7 @@ class _MainScreenState extends State<MainScreen> {
                 const SizedBox(height: AppSpacing.s),
                 ListTile(
                   leading: const Icon(Icons.calculate),
-                  title: Text(localizations.translate('calculators')),
+                  title: Text(localizations.translate(LocalizationKeys.calculators)),
                   selected: _currentIndex == 2,
                   selectedTileColor: Theme.of(context).primaryColor.withAlpha(25), // 10% opacity
                   onTap: () {
@@ -230,7 +231,7 @@ class _MainScreenState extends State<MainScreen> {
                 const SizedBox(height: AppSpacing.s),
                 ListTile(
                   leading: const Icon(Icons.view_in_ar),
-                  title: Text(localizations.translate('modelingScreen')),
+                  title: Text(localizations.translate(LocalizationKeys.modelingScreen)),
                   selected: _currentIndex == 3,
                   selectedTileColor: Theme.of(context).primaryColor.withAlpha(25), // 10% opacity
                   onTap: () {
@@ -247,7 +248,7 @@ class _MainScreenState extends State<MainScreen> {
                 const SizedBox(height: AppSpacing.s),
                 ListTile(
                   leading: const Icon(Icons.settings),
-                  title: Text(localizations.translate('settings')),
+                  title: Text(localizations.translate(LocalizationKeys.settings)),
                   selected: _currentIndex == 4,
                   selectedTileColor: Theme.of(context).primaryColor.withAlpha(25), // 10% opacity
                   onTap: () {
@@ -265,16 +266,16 @@ class _MainScreenState extends State<MainScreen> {
                 const Divider(),
                 AboutListTile(
                   icon: const Icon(Icons.info),
-                  applicationName: localizations.translate('appTitle'), // Используем локализованный заголовок
+                  applicationName: localizations.translate(LocalizationKeys.appTitle), // Используем локализованный заголовок
                   applicationVersion: AppConstants.appVersion,
                   aboutBoxChildren: [
                     const SizedBox(height: AppSpacing.s),
                     Text(
-                      localizations.translate('settingsNote'),
+                      localizations.translate(LocalizationKeys.settingsNote),
                       style: const TextStyle(fontSize: AppFonts.bodySmall),
                     ),
                   ],
-                  child: Text(localizations.translate('appTitle')), // Используем локализованный заголовок
+                  child: Text(localizations.translate(LocalizationKeys.appTitle)), // Используем локализованный заголовок
                 ),
                 const SizedBox(height: AppSpacing.s),
               ],

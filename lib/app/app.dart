@@ -4,8 +4,8 @@ import 'package:app/ui/routes/app_router.dart';
 import 'package:app/shared/theme/app_theme.dart';
 import 'package:app/core/services/navigation_config_service.dart';
 import 'package:app/core/services/locale_service.dart';
-import 'package:app/core/constants/app_constants.dart';
 import 'package:app/localization/app_localizations.dart';
+import 'package:app/core/constants/localization_keys.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
@@ -25,13 +25,14 @@ class MyApp extends StatelessWidget {
           create: (context) => LocaleService()..init(),
         ),
       ],
-      child: Consumer2<NavigationConfigService, LocaleService>(
-        builder: (context, navigationService, localeService, child) {
+      child: Consumer<LocaleService>(
+        builder: (context, localeService, child) {
           return MaterialApp(
-            title: AppConstants.appName,
+            // Use localized app title instead of hardcoded constant
+            title: AppLocalizations.of(context).translate(LocalizationKeys.appTitle),
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            themeMode: navigationService.getFlutterThemeMode(),
+            themeMode: navigationConfigService.getFlutterThemeMode(),
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

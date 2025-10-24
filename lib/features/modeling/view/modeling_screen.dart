@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:app/localization/app_localizations.dart';
 import 'package:app/core/constants/app_spacing.dart';
 import 'package:app/core/constants/app_colors.dart';
+import 'package:app/core/constants/localization_keys.dart';
 import 'room_controller.dart';
 import 'room_settings_dialog.dart';
 
@@ -46,7 +47,7 @@ class _ModelingScreenContentState extends State<ModelingScreenContent> {
               children: [
                 Expanded(
                   child: Text(
-                    localizations.translate('modelingScreen'),
+                    localizations.translate(LocalizationKeys.modelingScreen),
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
@@ -60,7 +61,7 @@ class _ModelingScreenContentState extends State<ModelingScreenContent> {
             ),
             const SizedBox(height: AppSpacing.m),
             Text(
-              localizations.translate('modelingScreenDescription'),
+              localizations.translate(LocalizationKeys.modelingScreenDescription),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: AppSpacing.l),
@@ -97,13 +98,13 @@ class _ModelingScreenContentState extends State<ModelingScreenContent> {
             ),
             const SizedBox(height: AppSpacing.m),
             Text(
-              _errorMessage ?? localizations.translate('modelLoadingError'),
+              _errorMessage ?? localizations.translate(LocalizationKeys.modelLoadingError),
               style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.s),
             Text(
-              localizations.translate('modelLoadingErrorDescription'),
+              localizations.translate(LocalizationKeys.modelLoadingErrorDescription),
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
@@ -117,11 +118,11 @@ class _ModelingScreenContentState extends State<ModelingScreenContent> {
                 // Попробуем использовать локальный файл активов
                 roomParams.useAssetModel();
               },
-              child: Text(localizations.translate('retryWithAsset')),
+              child: Text(localizations.translate(LocalizationKeys.retryWithAsset)),
             ),
             const SizedBox(height: AppSpacing.s),
             Text(
-              localizations.translate('usingAssetModelInfo'),
+              localizations.translate(LocalizationKeys.usingAssetModelInfo),
               style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.center,
             ),
@@ -147,7 +148,7 @@ class _ModelingScreenContentState extends State<ModelingScreenContent> {
             '${roomParams.hashCode}' // Добавляем hashCode для лучшего обновления
           ),
           src: roomParams.generatedModel,
-          alt: localizations.translate('room_model_alt'),
+          alt: localizations.translate(LocalizationKeys.roomModelAlt),
           ar: true,
           arModes: ['scene-viewer', 'webxr', 'quick-look'],
           environmentImage: 'neutral',

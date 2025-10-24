@@ -3,6 +3,7 @@ import 'package:app/localization/app_localizations.dart';
 import 'package:app/core/constants/app_colors.dart';
 import 'package:app/core/constants/app_fonts.dart';
 import 'package:app/core/constants/app_spacing.dart';
+import 'package:app/core/constants/localization_keys.dart';
 import 'package:app/features/calculators/models/area_history_entry.dart';
 import 'package:app/features/calculators/view/area_calculator/history/history_screen.dart';
 import 'package:app/core/services/persistence_service.dart';
@@ -103,7 +104,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
     if (heightText.isEmpty || widthText.isEmpty || countText.isEmpty || priceText.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context).translate('enter_valid_numbers')),
+          content: Text(AppLocalizations.of(context).translate(LocalizationKeys.enterValidNumbers)),
           backgroundColor: AppColors.error,
         ),
       );
@@ -119,7 +120,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
         height <= 0 || width <= 0 || count <= 0 || price <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context).translate('enter_valid_numbers')),
+          content: Text(AppLocalizations.of(context).translate(LocalizationKeys.enterValidNumbers)),
           backgroundColor: AppColors.error,
         ),
       );
@@ -192,17 +193,17 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(localizations.translate('confirm_delete')),
-          content: Text(localizations.translate('confirm_delete_selected_entries')
+          title: Text(localizations.translate(LocalizationKeys.confirmDelete)),
+          content: Text(localizations.translate(LocalizationKeys.confirmDeleteSelectedEntries)
               .replaceAll('{count}', _selectedEntries.length.toString())),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Text(localizations.translate('cancel')),
+              child: Text(localizations.translate(LocalizationKeys.cancel)),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: Text(localizations.translate('delete'), style: const TextStyle(color: AppColors.error)),
+              child: Text(localizations.translate(LocalizationKeys.delete), style: const TextStyle(color: AppColors.error)),
             ),
           ],
         );
@@ -251,7 +252,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
     if (_entries.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context).translate('no_entries_to_save')),
+          content: Text(AppLocalizations.of(context).translate(LocalizationKeys.noEntriesToSave)),
           backgroundColor: AppColors.error,
         ),
       );
@@ -291,7 +292,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
       if (scaffoldContext.mounted) {
         ScaffoldMessenger.of(scaffoldContext).showSnackBar(
           SnackBar(
-            content: Text(AppLocalizations.of(scaffoldContext).translate('saved_to_history')),
+            content: Text(AppLocalizations.of(scaffoldContext).translate(LocalizationKeys.savedToHistory)),
             backgroundColor: AppColors.primary,
           ),
         );
@@ -300,7 +301,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
       if (scaffoldContext.mounted) {
         ScaffoldMessenger.of(scaffoldContext).showSnackBar(
           SnackBar(
-            content: Text('${AppLocalizations.of(scaffoldContext).translate('error_saving_history')}: $e'),
+            content: Text('${AppLocalizations.of(scaffoldContext).translate(LocalizationKeys.errorSavingHistory)}: $e'),
             backgroundColor: AppColors.error,
           ),
         );
@@ -355,7 +356,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.translate('area_calculator')),
+        title: Text(localizations.translate(LocalizationKeys.areaCalculator)),
         centerTitle: true,
         actions: [
           if (_selectedEntries.isNotEmpty) ...[
@@ -363,30 +364,30 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
               onPressed: _confirmAndDeleteSelected,
               icon: const Icon(Icons.delete),
               color: AppColors.error,
-              tooltip: localizations.translate('delete_selected'),
+              tooltip: localizations.translate(LocalizationKeys.deleteSelected),
             ),
             IconButton(
               onPressed: _clearSelection,
               icon: const Icon(Icons.clear),
-              tooltip: localizations.translate('clear_selection'),
+              tooltip: localizations.translate(LocalizationKeys.clearSelection),
             ),
           ] else ...[
             if (_entries.isNotEmpty)
               IconButton(
                 onPressed: _selectAll,
                 icon: const Icon(Icons.select_all),
-                tooltip: localizations.translate('select_all'),
+                tooltip: localizations.translate(LocalizationKeys.selectAll),
               ),
             IconButton(
               onPressed: _showHistory,
               icon: const Icon(Icons.history),
-              tooltip: localizations.translate('history'),
+              tooltip: localizations.translate(LocalizationKeys.history),
             ),
             if (_entries.isNotEmpty)
               IconButton(
                 onPressed: _saveToHistory,
                 icon: const Icon(Icons.save),
-                tooltip: localizations.translate('save_to_history'),
+                tooltip: localizations.translate(LocalizationKeys.saveToHistory),
               ),
           ],
         ],
@@ -410,7 +411,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      localizations.translate('selected_entries')
+                      localizations.translate(LocalizationKeys.selectedEntries)
                           .replaceAll('{count}', _selectedEntries.length.toString()),
                       style: TextStyle(
                         color: AppColors.primary,
@@ -419,7 +420,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                     ),
                     TextButton(
                       onPressed: _clearSelection,
-                      child: Text(localizations.translate('clear_selection')),
+                      child: Text(localizations.translate(LocalizationKeys.clearSelection)),
                     ),
                   ],
                 ),
@@ -450,8 +451,8 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                         children: [
                           Text(
                             _editingIndex != null 
-                              ? localizations.translate('edit_entry') 
-                              : localizations.translate('add_entry'),
+                              ? localizations.translate(LocalizationKeys.editEntry) 
+                              : localizations.translate(LocalizationKeys.addEntry),
                             style: TextStyle(
                               fontSize: AppFonts.titleMedium,
                               fontWeight: AppFonts.semiBold,
@@ -478,7 +479,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                             focusNode: _heightFocusNode,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('height_mm'),
+                              labelText: localizations.translate(LocalizationKeys.heightMm),
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.height),
                             ),
@@ -493,7 +494,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                             focusNode: _widthFocusNode,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('width_mm'),
+                              labelText: localizations.translate(LocalizationKeys.widthMm),
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.space_bar),
                             ),
@@ -508,7 +509,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                             focusNode: _countFocusNode,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('count'),
+                              labelText: localizations.translate(LocalizationKeys.count),
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.numbers),
                             ),
@@ -523,7 +524,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                             focusNode: _priceFocusNode,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('price_per_m2'),
+                              labelText: localizations.translate(LocalizationKeys.pricePerM2),
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.attach_money),
                             ),
@@ -549,8 +550,8 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                               ),
                               child: Text(
                                 _editingIndex != null 
-                                  ? localizations.translate('update_entry') 
-                                  : localizations.translate('add_entry'),
+                                  ? localizations.translate(LocalizationKeys.updateEntry) 
+                                  : localizations.translate(LocalizationKeys.addEntry),
                                 style: TextStyle(
                                   fontSize: AppFonts.bodyMedium,
                                   fontWeight: AppFonts.semiBold,
@@ -580,7 +581,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                                 side: const BorderSide(color: AppColors.error),
                               ),
                               child: Text(
-                                localizations.translate('cancel'),
+                                localizations.translate(LocalizationKeys.cancel),
                                 style: TextStyle(
                                   fontSize: AppFonts.titleMedium,
                                   fontWeight: AppFonts.semiBold,
@@ -614,14 +615,14 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                           ),
                           child: Row(
                             children: [
-                              Expanded(flex: 1, child: Center(child: Text(localizations.translate('entry')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('height_mm')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('width_mm')))),
-                              Expanded(flex: 1, child: Center(child: Text(localizations.translate('count')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('price_per_m2')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('area')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('total_price')))),
-                              Expanded(flex: 1, child: Center(child: Text(localizations.translate('edit')))), // Only edit column now
+                              Expanded(flex: 1, child: Center(child: Text(localizations.translate(LocalizationKeys.entry)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.heightMm)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.widthMm)))),
+                              Expanded(flex: 1, child: Center(child: Text(localizations.translate(LocalizationKeys.count)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.pricePerM2)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.area)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.totalPrice)))),
+                              Expanded(flex: 1, child: Center(child: Text(localizations.translate(LocalizationKeys.edit)))), // Only edit column now
                             ],
                           ),
                         );
@@ -659,7 +660,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                                       onPressed: () => _editEntry(index),
                                       icon: Icon(Icons.edit, color: AppColors.primary),
                                       splashRadius: AppSpacing.iconS,
-                                      tooltip: localizations.translate('edit_entry'),
+                                      tooltip: localizations.translate(LocalizationKeys.editEntry),
                                       padding: const EdgeInsets.all(4.0),
                                     ),
                                   ),
@@ -689,7 +690,7 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      localizations.translate('summary'),
+                      localizations.translate(LocalizationKeys.summary),
                       style: TextStyle(
                         fontSize: AppFonts.titleMedium,
                         fontWeight: AppFonts.bold,
@@ -700,15 +701,15 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(localizations.translate('total_area')),
-                        Text(localizations.translate('square_meters_with_value').replaceAll('{value}', totalArea.toStringAsFixed(2))),
+                        Text(localizations.translate(LocalizationKeys.totalArea)),
+                        Text(localizations.translate(LocalizationKeys.squareMetersWithValue).replaceAll('{value}', totalArea.toStringAsFixed(2))),
                       ],
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(localizations.translate('total_count')),
+                        Text(localizations.translate(LocalizationKeys.totalCount)),
                         Text(totalCount.toStringAsFixed(0)),
                       ],
                     ),
@@ -716,8 +717,8 @@ class _AreaCalculatorScreenState extends State<AreaCalculatorScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(localizations.translate('total_price')),
-                        Text(localizations.translate('currency_value').replaceAll('{value}', totalPrice.toStringAsFixed(2))),
+                        Text(localizations.translate(LocalizationKeys.totalPrice)),
+                        Text(localizations.translate(LocalizationKeys.currencyValue).replaceAll('{value}', totalPrice.toStringAsFixed(2))),
                       ],
                     ),
                   ],

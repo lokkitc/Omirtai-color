@@ -3,6 +3,7 @@ import 'package:app/localization/app_localizations.dart';
 import 'package:app/core/constants/app_colors.dart';
 import 'package:app/core/constants/app_fonts.dart';
 import 'package:app/core/constants/app_spacing.dart';
+import 'package:app/core/constants/localization_keys.dart';
 import 'package:app/features/calculators/view/area_calculator/area_calculator_screen.dart';
 import 'package:app/features/calculators/view/volume_calculator/volume_calculator_screen.dart';
 
@@ -20,7 +21,7 @@ class CalculatorsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              localizations.translate('calculators_screen'),
+              localizations.translate(LocalizationKeys.calculatorsScreen),
               style: TextStyle(
                 fontSize: AppFonts.headlineSmall,
                 fontWeight: AppFonts.bold,
@@ -30,7 +31,7 @@ class CalculatorsScreen extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.xs),
               Text(
-                localizations.translate('calculators_screen_description'),
+                localizations.translate(LocalizationKeys.calculatorsScreenDescription),
                 style: TextStyle(
                   fontSize: AppFonts.bodySmall,
                   color: Theme.of(context).hintColor,
@@ -41,7 +42,7 @@ class CalculatorsScreen extends StatelessWidget {
             // Padding(
             //   padding: const EdgeInsets.symmetric(),
             //   child: Text(
-            //     localizations.translate('calculators_screen_description'),
+            //     localizations.translate(LocalizationKeys.calculatorsScreenDescription),
             //     style: TextStyle(
             //       fontSize: AppFonts.bodyLarge,
             //       color: AppColors.gray,
@@ -53,8 +54,8 @@ class CalculatorsScreen extends StatelessWidget {
             // Calculator options in card-based layout
             _CalculatorOptionCard(
               icon: Icons.square_foot,
-              title: localizations.translate('area_calculator'),
-              description: localizations.translate('calculate_area'),
+              title: localizations.translate(LocalizationKeys.areaCalculator),
+              description: localizations.translate(LocalizationKeys.calculateArea),
               
               onTap: () {
                 Navigator.push(
@@ -68,8 +69,8 @@ class CalculatorsScreen extends StatelessWidget {
             const SizedBox(height: AppSpacing.s),
             _CalculatorOptionCard(
               icon: Icons.inventory_2,
-              title: localizations.translate('volume_calculator'),
-              description: localizations.translate('calculate_volume'),
+              title: localizations.translate(LocalizationKeys.volumeCalculator),
+              description: localizations.translate(LocalizationKeys.calculateVolume),
               onTap: () {
                 Navigator.push(
                   context,

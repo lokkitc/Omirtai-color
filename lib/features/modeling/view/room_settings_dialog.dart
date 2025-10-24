@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:app/localization/app_localizations.dart';
 import 'package:app/core/constants/app_spacing.dart';
 import 'package:app/core/constants/app_colors.dart';
+import 'package:app/core/constants/localization_keys.dart';
 import 'package:app/core/services/ral_color_service.dart';
 import 'package:app/core/models/ral_color.dart';
 import 'package:app/core/models/texture.dart' as texture_model;
@@ -18,7 +19,7 @@ class RoomSettingsDialog extends StatelessWidget {
     final localizations = AppLocalizations.of(context);
 
     return AlertDialog(
-      title: Text(localizations.translate('roomSettings')),
+      title: Text(localizations.translate(LocalizationKeys.roomSettings)),
       content: SizedBox(
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.7,
@@ -32,14 +33,14 @@ class RoomSettingsDialog extends StatelessWidget {
                   children: [
                     // Размеры комнаты
                     Text(
-                      localizations.translate('roomDimensions'),
+                      localizations.translate(LocalizationKeys.roomDimensions),
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: AppSpacing.s),
                     
                     _buildDimensionSlider(
                       context,
-                      localizations.translate('roomWidth'),
+                      localizations.translate(LocalizationKeys.roomWidth),
                       roomParams.roomWidth,
                       1000.0, // 1 meter
                       10000.0, // 10 meters
@@ -48,7 +49,7 @@ class RoomSettingsDialog extends StatelessWidget {
                     
                     _buildDimensionSlider(
                       context,
-                      localizations.translate('roomDepth'),
+                      localizations.translate(LocalizationKeys.roomDepth),
                       roomParams.roomDepth,
                       1000.0, // 1 meter
                       10000.0, // 10 meters
@@ -57,7 +58,7 @@ class RoomSettingsDialog extends StatelessWidget {
                     
                     _buildDimensionSlider(
                       context,
-                      localizations.translate('roomHeight'),
+                      localizations.translate(LocalizationKeys.roomHeight),
                       roomParams.roomHeight,
                       1000.0, // 1 meter
                       5000.0, // 5 meters
@@ -68,14 +69,14 @@ class RoomSettingsDialog extends StatelessWidget {
                     
                     // Цвета поверхностей
                     Text(
-                      localizations.translate('surfaceColors'),
+                      localizations.translate(LocalizationKeys.surfaceColors),
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: AppSpacing.s),
                     
                     _buildColorAndTexturePicker(
                       context,
-                      localizations.translate('floorColor'),
+                      localizations.translate(LocalizationKeys.floorColor),
                       roomParams.floorColor,
                       roomParams.floorTexture,
                       (color) => roomParams.floorColor = color,
@@ -84,7 +85,7 @@ class RoomSettingsDialog extends StatelessWidget {
                     
                     _buildColorAndTexturePicker(
                       context,
-                      localizations.translate('ceilingColor'),
+                      localizations.translate(LocalizationKeys.ceilingColor),
                       roomParams.ceilingColor,
                       roomParams.ceilingTexture,
                       (color) => roomParams.ceilingColor = color,
@@ -93,7 +94,7 @@ class RoomSettingsDialog extends StatelessWidget {
                     
                     _buildColorAndTexturePicker(
                       context,
-                      localizations.translate('wallColor'),
+                      localizations.translate(LocalizationKeys.wallColor),
                       roomParams.frontWallColor,
                       roomParams.frontWallTexture,
                       (color) {
@@ -123,13 +124,13 @@ class RoomSettingsDialog extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text(localizations.translate('close')),
+          child: Text(localizations.translate(LocalizationKeys.close)),
         ),
         ElevatedButton(
           onPressed: () {
             roomParams.resetToDefault();
           },
-          child: Text(localizations.translate('resetToDefault')),
+          child: Text(localizations.translate(LocalizationKeys.resetToDefault)),
         ),
       ],
     );
@@ -230,7 +231,7 @@ class RoomSettingsDialog extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context).translate('selectColor')),
+          title: Text(AppLocalizations.of(context).translate(LocalizationKeys.selectColor)),
           content: SingleChildScrollView(
             child: ColorPicker(
               initialColor: currentColor,
@@ -240,7 +241,7 @@ class RoomSettingsDialog extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: Navigator.of(context).pop,
-              child: Text(AppLocalizations.of(context).translate('close')),
+              child: Text(AppLocalizations.of(context).translate(LocalizationKeys.close)),
             ),
           ],
         );
@@ -257,7 +258,7 @@ class RoomSettingsDialog extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context).translate('selectTexture')),
+          title: Text(AppLocalizations.of(context).translate(LocalizationKeys.selectTexture)),
           content: SizedBox(
             width: 300,
             height: 300,
@@ -269,7 +270,7 @@ class RoomSettingsDialog extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: Navigator.of(context).pop,
-              child: Text(AppLocalizations.of(context).translate('close')),
+              child: Text(AppLocalizations.of(context).translate(LocalizationKeys.close)),
             ),
           ],
         );
@@ -350,7 +351,7 @@ class _ColorPickerState extends State<ColorPicker> {
               if (snapshot.hasError || !snapshot.hasData) {
                 return Center(
                   child: Text(
-                    AppLocalizations.of(context).translate('error_loading_ral_colors'), // Changed from hardcoded 'Error loading RAL colors'
+                    AppLocalizations.of(context).translate(LocalizationKeys.errorLoadingRalColors), // Changed from hardcoded 'Error loading RAL colors'
                     style: const TextStyle(color: AppColors.error),
                   ),
                 );
@@ -461,7 +462,7 @@ class _TexturePickerState extends State<TexturePicker> {
       children: [
         // None option
         ListTile(
-          title: Text(AppLocalizations.of(context).translate('none_texture')), // Changed from hardcoded 'None'
+          title: Text(AppLocalizations.of(context).translate(LocalizationKeys.noneTexture)), // Changed from hardcoded 'None'
           leading: Container(
             width: 40,
             height: 40,

@@ -60,7 +60,7 @@ class _ColorCollectionPageState extends State<ColorCollectionPage> {
       });
     } catch (e) {
       setState(() {
-        _error = localizations.translate('error_loading_colors').replaceAll('{error}', e.toString());
+        _error = localizations.translate(LocalizationKeys.errorLoadingColors).replaceAll('{error}', e.toString()); // Changed 'error_loading_colors' to LocalizationKeys.error_loading_colors
         _isLoading = false;
       });
     }

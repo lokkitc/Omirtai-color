@@ -9,7 +9,8 @@ class AppLocalizations {
   final Locale locale;
 
   static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+    final localizations = Localizations.of<AppLocalizations>(context, AppLocalizations);
+    return localizations!;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
@@ -494,7 +495,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) {
-    return ['en', 'ru', 'kk'].contains(locale.languageCode); // Added 'kk' for Kazakh
+    return ['en', 'ru', 'kk'].contains(locale.languageCode);
   }
 
   @override
@@ -505,8 +506,36 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool shouldReload(_AppLocalizationsDelegate old) => false;
+  bool shouldReload(_AppLocalizationsDelegate old) => true;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app/localization/app_localizations.dart';
 import 'package:app/core/constants/app_spacing.dart';
+import 'package:app/core/constants/localization_keys.dart';
 import 'room_controller.dart';
 
 class RoomSettingsPanel extends StatelessWidget {
@@ -21,21 +22,21 @@ class RoomSettingsPanel extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                localizations.translate('roomSettings'),
+                localizations.translate(LocalizationKeys.roomSettings),
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: AppSpacing.m),
               
               // Размеры комнаты
               Text(
-                localizations.translate('roomDimensions'),
+                localizations.translate(LocalizationKeys.roomDimensions),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: AppSpacing.s),
               
               _buildDimensionSlider(
                 context,
-                localizations.translate('roomWidth'),
+                localizations.translate(LocalizationKeys.roomWidth),
                 roomParams.roomWidth,
                 2.0,
                 10.0,
@@ -44,7 +45,7 @@ class RoomSettingsPanel extends StatelessWidget {
               
               _buildDimensionSlider(
                 context,
-                localizations.translate('roomDepth'),
+                localizations.translate(LocalizationKeys.roomDepth),
                 roomParams.roomDepth,
                 2.0,
                 10.0,
@@ -53,7 +54,7 @@ class RoomSettingsPanel extends StatelessWidget {
               
               _buildDimensionSlider(
                 context,
-                localizations.translate('roomHeight'),
+                localizations.translate(LocalizationKeys.roomHeight),
                 roomParams.roomHeight,
                 2.0,
                 5.0,
@@ -64,28 +65,28 @@ class RoomSettingsPanel extends StatelessWidget {
               
               // Цвета поверхностей
               Text(
-                localizations.translate('surfaceColors'),
+                localizations.translate(LocalizationKeys.surfaceColors),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: AppSpacing.s),
               
               _buildColorPicker(
                 context,
-                localizations.translate('floorColor'),
+                localizations.translate(LocalizationKeys.floorColor),
                 roomParams.floorColor,
                 (color) => roomParams.floorColor = color,
               ),
               
               _buildColorPicker(
                 context,
-                localizations.translate('ceilingColor'),
+                localizations.translate(LocalizationKeys.ceilingColor),
                 roomParams.ceilingColor,
                 (color) => roomParams.ceilingColor = color,
               ),
               
               _buildColorPicker(
                 context,
-                localizations.translate('wallColor'),
+                localizations.translate(LocalizationKeys.wallColor),
                 roomParams.frontWallColor,
                 (color) {
                   roomParams.frontWallColor = color;
@@ -101,7 +102,7 @@ class RoomSettingsPanel extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                   onPressed: roomParams.resetToDefault,
-                  child: Text(localizations.translate('resetToDefault')),
+                  child: Text(localizations.translate(LocalizationKeys.resetToDefault)),
                 ),
               ),
             ],
@@ -192,7 +193,7 @@ class RoomSettingsPanel extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(AppLocalizations.of(context).translate('selectColor')),
+          title: Text(AppLocalizations.of(context).translate(LocalizationKeys.selectColor)),
           content: SingleChildScrollView(
             child: ColorPicker(
               initialColor: currentColor,
@@ -202,7 +203,7 @@ class RoomSettingsPanel extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: Navigator.of(context).pop,
-              child: Text(AppLocalizations.of(context).translate('close')),
+              child: Text(AppLocalizations.of(context).translate(LocalizationKeys.close)),
             ),
           ],
         );

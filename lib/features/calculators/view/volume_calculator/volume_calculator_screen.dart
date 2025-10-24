@@ -3,6 +3,7 @@ import 'package:app/localization/app_localizations.dart';
 import 'package:app/core/constants/app_colors.dart';
 import 'package:app/core/constants/app_fonts.dart';
 import 'package:app/core/constants/app_spacing.dart';
+import 'package:app/core/constants/localization_keys.dart';
 import 'package:app/features/calculators/models/volume_calculator_entry.dart';
 import 'package:app/features/calculators/models/volume_history_entry.dart';
 import 'package:app/features/calculators/view/volume_calculator/history/volume_history_screen.dart';
@@ -60,7 +61,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
     if (lengthText.isEmpty || widthText.isEmpty || depthText.isEmpty || countText.isEmpty || priceText.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context).translate('enter_valid_numbers')),
+          content: Text(AppLocalizations.of(context).translate(LocalizationKeys.enterValidNumbers)),
           backgroundColor: AppColors.error,
         ),
       );
@@ -77,7 +78,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
         length <= 0 || width <= 0 || depth <= 0 || count <= 0 || price <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context).translate('enter_valid_numbers')),
+          content: Text(AppLocalizations.of(context).translate(LocalizationKeys.enterValidNumbers)),
           backgroundColor: AppColors.error,
         ),
       );
@@ -153,17 +154,17 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(localizations.translate('confirm_delete')),
-          content: Text(localizations.translate('confirm_delete_selected_entries')
+          title: Text(localizations.translate(LocalizationKeys.confirmDelete)),
+          content: Text(localizations.translate(LocalizationKeys.confirmDeleteSelectedEntries)
               .replaceAll('{count}', _selectedEntries.length.toString())),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Text(localizations.translate('cancel')),
+              child: Text(localizations.translate(LocalizationKeys.cancel)),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: Text(localizations.translate('delete'), style: const TextStyle(color: AppColors.error)),
+              child: Text(localizations.translate(LocalizationKeys.delete), style: const TextStyle(color: AppColors.error)),
             ),
           ],
         );
@@ -213,7 +214,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
     if (_entries.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(AppLocalizations.of(context).translate('no_entries_to_save')),
+          content: Text(AppLocalizations.of(context).translate(LocalizationKeys.noEntriesToSave)),
           backgroundColor: AppColors.error,
         ),
       );
@@ -253,7 +254,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
       if (scaffoldContext.mounted) {
         ScaffoldMessenger.of(scaffoldContext).showSnackBar(
           SnackBar(
-            content: Text(AppLocalizations.of(scaffoldContext).translate('saved_to_history')),
+            content: Text(AppLocalizations.of(scaffoldContext).translate(LocalizationKeys.savedToHistory)),
             backgroundColor: AppColors.primary,
           ),
         );
@@ -262,7 +263,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
       if (scaffoldContext.mounted) {
         ScaffoldMessenger.of(scaffoldContext).showSnackBar(
           SnackBar(
-            content: Text('${AppLocalizations.of(scaffoldContext).translate('error_saving_history')}: $e'),
+            content: Text('${AppLocalizations.of(scaffoldContext).translate(LocalizationKeys.errorSavingHistory)}: $e'),
             backgroundColor: AppColors.error,
           ),
         );
@@ -319,7 +320,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.translate('volume_calculator')),
+        title: Text(localizations.translate(LocalizationKeys.volumeCalculator)),
         centerTitle: true,
         actions: [
           if (_selectedEntries.isNotEmpty) ...[
@@ -327,30 +328,30 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
               onPressed: _confirmAndDeleteSelected,
               icon: const Icon(Icons.delete),
               color: AppColors.error,
-              tooltip: localizations.translate('delete_selected'),
+              tooltip: localizations.translate(LocalizationKeys.deleteSelected),
             ),
             IconButton(
               onPressed: _clearSelection,
               icon: const Icon(Icons.clear),
-              tooltip: localizations.translate('clear_selection'),
+              tooltip: localizations.translate(LocalizationKeys.clearSelection),
             ),
           ] else ...[
             if (_entries.isNotEmpty)
               IconButton(
                 onPressed: _selectAll,
                 icon: const Icon(Icons.select_all),
-                tooltip: localizations.translate('select_all'),
+                tooltip: localizations.translate(LocalizationKeys.selectAll),
               ),
             IconButton(
               onPressed: _showHistory,
               icon: const Icon(Icons.history),
-              tooltip: localizations.translate('history'),
+              tooltip: localizations.translate(LocalizationKeys.history),
             ),
             if (_entries.isNotEmpty)
               IconButton(
                 onPressed: _saveToHistory,
                 icon: const Icon(Icons.save),
-                tooltip: localizations.translate('save_to_history'),
+                tooltip: localizations.translate(LocalizationKeys.saveToHistory),
               ),
           ],
         ],
@@ -374,7 +375,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      localizations.translate('selected_entries')
+                      localizations.translate(LocalizationKeys.selectedEntries)
                           .replaceAll('{count}', _selectedEntries.length.toString()),
                       style: TextStyle(
                         color: AppColors.primary,
@@ -383,7 +384,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                     ),
                     TextButton(
                       onPressed: _clearSelection,
-                      child: Text(localizations.translate('clear_selection')),
+                      child: Text(localizations.translate(LocalizationKeys.clearSelection)),
                     ),
                   ],
                 ),
@@ -414,8 +415,8 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                         children: [
                           Text(
                             _editingIndex != null 
-                              ? localizations.translate('edit_entry') 
-                              : localizations.translate('add_entry'),
+                              ? localizations.translate(LocalizationKeys.editEntry) 
+                              : localizations.translate(LocalizationKeys.addEntry),
                             style: TextStyle(
                               fontSize: AppFonts.titleMedium,
                               fontWeight: AppFonts.semiBold,
@@ -442,7 +443,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                             focusNode: _lengthFocusNode,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('length_mm'),
+                              labelText: localizations.translate(LocalizationKeys.lengthMm),
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.straighten),
                             ),
@@ -457,7 +458,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                             focusNode: _widthFocusNode,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('width_mm'),
+                              labelText: localizations.translate(LocalizationKeys.widthMm),
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.space_bar),
                             ),
@@ -472,7 +473,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                             focusNode: _depthFocusNode, // Changed from height to depth
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('depth_mm'), // Changed from height to depth
+                              labelText: localizations.translate(LocalizationKeys.depthMm), // Changed from height to depth
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.height),
                             ),
@@ -487,7 +488,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                             focusNode: _countFocusNode,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('count'),
+                              labelText: localizations.translate(LocalizationKeys.count),
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.numbers),
                             ),
@@ -502,7 +503,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                             focusNode: _priceFocusNode,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              labelText: localizations.translate('price_per_m3'), // Changed from m2 to m3
+                              labelText: localizations.translate(LocalizationKeys.pricePerM3), // Changed from m2 to m3
                               border: const OutlineInputBorder(),
                               prefixIcon: const Icon(Icons.attach_money),
                             ),
@@ -528,8 +529,8 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                               ),
                               child: Text(
                                 _editingIndex != null 
-                                  ? localizations.translate('update_entry') 
-                                  : localizations.translate('add_entry'),
+                                  ? localizations.translate(LocalizationKeys.updateEntry) 
+                                  : localizations.translate(LocalizationKeys.addEntry),
                                 style: TextStyle(
                                   fontSize: AppFonts.bodyMedium,
                                   fontWeight: AppFonts.semiBold,
@@ -560,7 +561,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                                 side: const BorderSide(color: AppColors.error),
                               ),
                               child: Text(
-                                localizations.translate('cancel'),
+                                localizations.translate(LocalizationKeys.cancel),
                                 style: TextStyle(
                                   fontSize: AppFonts.titleMedium,
                                   fontWeight: AppFonts.semiBold,
@@ -594,15 +595,15 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                           ),
                           child: Row(
                             children: [
-                              Expanded(flex: 1, child: Center(child: Text(localizations.translate('entry')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('length_mm')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('width_mm')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('depth_mm')))), // Changed from height to depth
-                              Expanded(flex: 1, child: Center(child: Text(localizations.translate('count')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('price_per_m3')))), // Changed from m2 to m3
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('volume')))),
-                              Expanded(flex: 2, child: Center(child: Text(localizations.translate('total_price')))),
-                              Expanded(flex: 1, child: Center(child: Text(localizations.translate('edit')))), // Only edit column now
+                              Expanded(flex: 1, child: Center(child: Text(localizations.translate(LocalizationKeys.entry)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.lengthMm)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.widthMm)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.depthMm)))), // Changed from height to depth
+                              Expanded(flex: 1, child: Center(child: Text(localizations.translate(LocalizationKeys.count)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.pricePerM3)))), // Changed from m2 to m3
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.volume)))),
+                              Expanded(flex: 2, child: Center(child: Text(localizations.translate(LocalizationKeys.totalPrice)))),
+                              Expanded(flex: 1, child: Center(child: Text(localizations.translate(LocalizationKeys.edit)))), // Only edit column now
                             ],
                           ),
                         );
@@ -641,7 +642,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                                       onPressed: () => _editEntry(index),
                                       icon: Icon(Icons.edit, color: AppColors.primary),
                                       splashRadius: AppSpacing.iconS,
-                                      tooltip: localizations.translate('edit_entry'),
+                                      tooltip: localizations.translate(LocalizationKeys.editEntry),
                                       padding: const EdgeInsets.all(4.0),
                                     ),
                                   ),
@@ -671,7 +672,7 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      localizations.translate('summary'),
+                      localizations.translate(LocalizationKeys.summary),
                       style: TextStyle(
                         fontSize: AppFonts.titleMedium,
                         fontWeight: AppFonts.bold,
@@ -682,15 +683,15 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(localizations.translate('total_volume')),
-                        Text(localizations.translate('cubic_meters_with_value').replaceAll('{value}', totalVolume.toStringAsFixed(2))),
+                        Text(localizations.translate(LocalizationKeys.totalVolume)),
+                        Text(localizations.translate(LocalizationKeys.cubicMetersWithValue).replaceAll('{value}', totalVolume.toStringAsFixed(2))),
                       ],
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(localizations.translate('total_count')),
+                        Text(localizations.translate(LocalizationKeys.totalCount)),
                         Text(totalCount.toStringAsFixed(0)),
                       ],
                     ),
@@ -698,8 +699,8 @@ class _VolumeCalculatorScreenState extends State<VolumeCalculatorScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(localizations.translate('total_price')),
-                        Text(localizations.translate('currency_value').replaceAll('{value}', totalPrice.toStringAsFixed(2))),
+                        Text(localizations.translate(LocalizationKeys.totalPrice)),
+                        Text(localizations.translate(LocalizationKeys.currencyValue).replaceAll('{value}', totalPrice.toStringAsFixed(2))),
                       ],
                     ),
                   ],

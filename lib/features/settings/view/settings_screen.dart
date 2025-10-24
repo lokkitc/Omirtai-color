@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:app/core/constants/theme_mode.dart';
 import 'package:app/core/constants/app_fonts.dart';
 import 'package:app/core/constants/app_spacing.dart';
+import 'package:app/core/constants/localization_keys.dart';
 import 'package:app/core/services/navigation_config_service.dart';
 import 'package:app/core/services/locale_service.dart';
 import 'package:app/localization/app_localizations.dart';
@@ -43,7 +44,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                localizations.translate('settings'),
+                localizations.translate(LocalizationKeys.settings),
                 style: TextStyle(
                   fontSize: AppFonts.headlineSmall,
                   fontWeight: AppFonts.bold,
@@ -51,7 +52,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               const SizedBox(height: AppSpacing.xs),
               Text(
-                localizations.translate('settings_note'),
+                localizations.translate(LocalizationKeys.settingsNote),
                 style: TextStyle(
                   fontSize: AppFonts.bodySmall,
                   color: Theme.of(context).hintColor,
@@ -70,7 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        localizations.translate('navigation'),
+                        localizations.translate(LocalizationKeys.navigation),
                         style: TextStyle(
                           fontSize: AppFonts.titleLarge,
                           fontWeight: AppFonts.bold,
@@ -78,7 +79,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       const SizedBox(height: AppSpacing.l),
                       SwitchListTile(
-                        title: Text(localizations.translate('show_bottom_nav_bar')),
+                        title: Text(localizations.translate(LocalizationKeys.showBottomNavBar)),
                         value: _showBottomNavBar,
                         onChanged: (bool value) {
                           // Prevent disabling both navigation options
@@ -86,7 +87,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             // Show a warning snackbar
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(localizations.translate('navigation_warning')),
+                                content: Text(localizations.translate(LocalizationKeys.navigationWarning)),
                                 duration: const Duration(seconds: 2),
                               ),
                             );
@@ -104,7 +105,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                       ),
                       SwitchListTile(
-                        title: Text(localizations.translate('show_drawer_nav')),
+                        title: Text(localizations.translate(LocalizationKeys.showDrawerNav)),
                         value: _showDrawer,
                         onChanged: (bool value) {
                           // Prevent disabling both navigation options
@@ -112,7 +113,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             // Show a warning snackbar
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(localizations.translate('navigation_warning')),
+                                content: Text(localizations.translate(LocalizationKeys.navigationWarning)),
                                 duration: const Duration(seconds: 2),
                               ),
                             );
@@ -146,7 +147,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        localizations.translate('theme'),
+                        localizations.translate(LocalizationKeys.theme),
                         style: TextStyle(
                           fontSize: AppFonts.titleLarge,
                           fontWeight: AppFonts.bold,
@@ -171,7 +172,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        localizations.translate('language'),
+                        localizations.translate(LocalizationKeys.language),
                         style: TextStyle(
                           fontSize: AppFonts.titleLarge,
                           fontWeight: AppFonts.bold,
@@ -194,7 +195,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Column(
       children: [
         RadioListTile<AppThemeMode>(
-          title: Text(localizations.translate('light_theme')),
+          title: Text(localizations.translate(LocalizationKeys.lightTheme)),
           secondary: const Icon(Icons.light_mode),
           value: AppThemeMode.light,
           groupValue: _themeMode,
@@ -211,7 +212,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         RadioListTile<AppThemeMode>(
-          title: Text(localizations.translate('dark_theme')),
+          title: Text(localizations.translate(LocalizationKeys.darkTheme)),
           secondary: const Icon(Icons.dark_mode),
           value: AppThemeMode.dark,
           groupValue: _themeMode,
@@ -228,7 +229,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         RadioListTile<AppThemeMode>(
-          title: Text(localizations.translate('system_theme')),
+          title: Text(localizations.translate(LocalizationKeys.systemTheme)),
           secondary: const Icon(Icons.auto_mode),
           value: AppThemeMode.system,
           groupValue: _themeMode,
@@ -252,7 +253,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Column(
       children: [
         RadioListTile<Locale>(
-          title: Text(localizations.translate('english_language')),
+          title: Text(localizations.translate(LocalizationKeys.englishLanguage)),
           secondary: const Icon(Icons.language),
           value: const Locale('en'),
           groupValue: _selectedLocale,
@@ -269,7 +270,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         RadioListTile<Locale>(
-          title: Text(localizations.translate('russian_language')),
+          title: Text(localizations.translate(LocalizationKeys.russianLanguage)),
           secondary: const Icon(Icons.language),
           value: const Locale('ru'),
           groupValue: _selectedLocale,
@@ -286,7 +287,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         RadioListTile<Locale>(
-          title: Text(localizations.translate('kazakh_language')),
+          title: Text(localizations.translate(LocalizationKeys.kazakhLanguage)),
           secondary: const Icon(Icons.language),
           value: const Locale('kk'), // Kazakh locale
           groupValue: _selectedLocale,

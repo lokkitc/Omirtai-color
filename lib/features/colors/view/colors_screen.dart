@@ -3,6 +3,7 @@ import 'package:app/localization/app_localizations.dart';
 // import 'package:app/core/constants/app_colors.dart';
 import 'package:app/core/constants/app_fonts.dart';
 import 'package:app/core/constants/app_spacing.dart';
+import 'package:app/core/constants/localization_keys.dart'; // Add this import
 import 'package:app/features/colors/view/collection/color_collection_page.dart';
 
 class ColorsScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class ColorsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              localizations.translate('settings'),
+              localizations.translate(LocalizationKeys.settings),
               style: TextStyle(
                 fontSize: AppFonts.headlineSmall,
                 fontWeight: AppFonts.bold,
@@ -28,7 +29,7 @@ class ColorsScreen extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.xs),
             Text(
-              localizations.translate('settings_note'),
+              localizations.translate(LocalizationKeys.settingsNote),
               style: TextStyle(
                 fontSize: AppFonts.bodySmall,
                 color: Theme.of(context).hintColor,
@@ -48,7 +49,7 @@ class ColorsScreen extends StatelessWidget {
                   children: [
                     
                     Text(
-                      localizations.translate('colorCollection'),
+                      localizations.translate(LocalizationKeys.colorCollection),
                       style: TextStyle(
                         fontSize: AppFonts.titleLarge,
                         fontWeight: AppFonts.bold,
@@ -64,7 +65,7 @@ class ColorsScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Text(localizations.translate('classic')),
+                      child: Text(localizations.translate(LocalizationKeys.classic)),
                     ),
                   ],
                 ),

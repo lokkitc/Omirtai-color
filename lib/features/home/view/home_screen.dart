@@ -3,6 +3,7 @@ import 'package:app/localization/app_localizations.dart';
 import 'package:app/core/constants/app_colors.dart';
 import 'package:app/core/constants/app_fonts.dart';
 import 'package:app/core/constants/app_spacing.dart';
+import 'package:app/core/constants/localization_keys.dart'; // Add this import
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.xxl),
             Text(
-              localizations.translate('home_screen'),
+              localizations.translate(LocalizationKeys.homeScreen),
               style: TextStyle(
                 fontSize: AppFonts.headlineSmall,
                 fontWeight: AppFonts.bold,
@@ -34,7 +35,7 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Text(
-                localizations.translate('home_screen_description'),
+                localizations.translate(LocalizationKeys.homeScreenDescription),
                 style: const TextStyle(
                   fontSize: AppFonts.bodyLarge,
                   color: AppColors.gray,
