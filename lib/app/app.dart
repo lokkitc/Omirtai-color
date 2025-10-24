@@ -27,22 +27,26 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<LocaleService>(
         builder: (context, localeService, child) {
-          return MaterialApp(
-            // Use localized app title instead of hardcoded constant
-            title: AppLocalizations.of(context).translate(LocalizationKeys.appTitle),
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: navigationConfigService.getFlutterThemeMode(),
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: LocaleService.supportedLocales,
-            locale: localeService.locale,
-            onGenerateRoute: AppRouter.generateRoute,
-            initialRoute: AppRouter.home,
+          return Consumer<NavigationConfigService>(
+            builder: (context, navigationService, child) {
+              return MaterialApp(
+                // Use localized app title with fallback
+                title: AppLocalizations.maybeOf(context)?.translate(LocalizationKeys.appTitle) ?? 'Omirtai Color',
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: navigationService.getFlutterThemeMode(),
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: LocaleService.supportedLocales,
+                locale: localeService.locale,
+                onGenerateRoute: AppRouter.generateRoute,
+                initialRoute: AppRouter.home,
+              );
+            },
           );
         },
       ),
