@@ -56,78 +56,82 @@ class _MainScreenState extends State<MainScreen> {
     // Используем Consumer для отслеживания изменений локализации
     return Consumer<LocaleService>(
       builder: (context, localeService, child) {
-        final localizations = AppLocalizations.of(context);
-        
-        final screenTitles = [
-          localizations.translate(LocalizationKeys.home),
-          localizations.translate(LocalizationKeys.colors),
-          localizations.translate(LocalizationKeys.calculators),
-          localizations.translate(LocalizationKeys.modelingScreen),
-          localizations.translate(LocalizationKeys.settings),
-        ];
+        return Consumer<NavigationConfigService>(
+          builder: (context, navigationService, child) {
+            final localizations = AppLocalizations.of(context);
+            
+            final screenTitles = [
+              localizations.translate(LocalizationKeys.home),
+              localizations.translate(LocalizationKeys.colors),
+              localizations.translate(LocalizationKeys.calculators),
+              localizations.translate(LocalizationKeys.modelingScreen),
+              localizations.translate(LocalizationKeys.settings),
+            ];
 
-        return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(kToolbarHeight),
-            child: AppBar(
-              title: Text(
-                screenTitles[_currentIndex],
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600, // SemiBold
+            return Scaffold(
+              appBar: PreferredSize(
+                preferredSize: const Size.fromHeight(kToolbarHeight),
+                child: AppBar(
+                  title: Text(
+                    screenTitles[_currentIndex],
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600, // SemiBold
+                    ),
+                  ),
+                  centerTitle: true,
+                  // Removed the menu button from actions since we want to remove the duplicate drawer navigation
                 ),
               ),
-              centerTitle: true,
-              // Removed the menu button from actions since we want to remove the duplicate drawer navigation
-            ),
-          ),
-          body: PageView(
-            controller: _pageController,
-            onPageChanged: _onPageChanged,
-            physics: const NeverScrollableScrollPhysics(), // Disable swipe to maintain tab control
-            children: _screens,
-          ),
-          bottomNavigationBar: navigationConfigService.showBottomNavBar
-              ? BottomNavigationBar(
-                  currentIndex: _currentIndex,
-                  onTap: _onTabTapped,
-                  selectedItemColor: Theme.of(context).primaryColor,
-                  unselectedItemColor: AppColors.gray,
-                  selectedFontSize: AppFonts.titleMedium, // AppFonts.titleSmall
-                  unselectedFontSize: AppFonts.bodySmall, // AppFonts.bodySmall
-                  type: BottomNavigationBarType.fixed,
-                  showSelectedLabels: true,
-                  showUnselectedLabels: true,
-                  elevation: 0,
-                  items: [
-                    BottomNavigationBarItem(
-                      icon: const Icon(Icons.home_outlined),
-                      activeIcon: const Icon(Icons.home),
-                      label: localizations.translate(LocalizationKeys.home),
-                    ),
-                    BottomNavigationBarItem(
-                      icon: const Icon(Icons.color_lens_outlined),
-                      activeIcon: const Icon(Icons.color_lens),
-                      label: localizations.translate(LocalizationKeys.colors),
-                    ),
-                    BottomNavigationBarItem(
-                      icon: const Icon(Icons.calculate_outlined),
-                      activeIcon: const Icon(Icons.calculate),
-                      label: localizations.translate(LocalizationKeys.calculators),
-                    ),
-                    BottomNavigationBarItem(
-                      icon: const Icon(Icons.view_in_ar_outlined),
-                      activeIcon: const Icon(Icons.view_in_ar),
-                      label: localizations.translate(LocalizationKeys.modelingScreen),
-                    ),
-                    BottomNavigationBarItem(
-                      icon: const Icon(Icons.settings_outlined),
-                      activeIcon: const Icon(Icons.settings),
-                      label: localizations.translate(LocalizationKeys.settings),
-                    ),
-                  ],
-                )
-              : null,
-          drawer: navigationConfigService.showDrawer ? _buildDrawer(localizations, context) : null,
+              body: PageView(
+                controller: _pageController,
+                onPageChanged: _onPageChanged,
+                physics: const NeverScrollableScrollPhysics(), // Disable swipe to maintain tab control
+                children: _screens,
+              ),
+              bottomNavigationBar: navigationService.showBottomNavBar
+                  ? BottomNavigationBar(
+                      currentIndex: _currentIndex,
+                      onTap: _onTabTapped,
+                      selectedItemColor: Theme.of(context).primaryColor,
+                      unselectedItemColor: AppColors.gray,
+                      selectedFontSize: AppFonts.titleMedium, // AppFonts.titleSmall
+                      unselectedFontSize: AppFonts.bodySmall, // AppFonts.bodySmall
+                      type: BottomNavigationBarType.fixed,
+                      showSelectedLabels: true,
+                      showUnselectedLabels: true,
+                      elevation: 0,
+                      items: [
+                        BottomNavigationBarItem(
+                          icon: const Icon(Icons.home_outlined),
+                          activeIcon: const Icon(Icons.home),
+                          label: localizations.translate(LocalizationKeys.home),
+                        ),
+                        BottomNavigationBarItem(
+                          icon: const Icon(Icons.color_lens_outlined),
+                          activeIcon: const Icon(Icons.color_lens),
+                          label: localizations.translate(LocalizationKeys.colors),
+                        ),
+                        BottomNavigationBarItem(
+                          icon: const Icon(Icons.calculate_outlined),
+                          activeIcon: const Icon(Icons.calculate),
+                          label: localizations.translate(LocalizationKeys.calculators),
+                        ),
+                        BottomNavigationBarItem(
+                          icon: const Icon(Icons.view_in_ar_outlined),
+                          activeIcon: const Icon(Icons.view_in_ar),
+                          label: localizations.translate(LocalizationKeys.modelingScreen),
+                        ),
+                        BottomNavigationBarItem(
+                          icon: const Icon(Icons.settings_outlined),
+                          activeIcon: const Icon(Icons.settings),
+                          label: localizations.translate(LocalizationKeys.settings),
+                        ),
+                      ],
+                    )
+                  : null,
+              drawer: navigationService.showDrawer ? _buildDrawer(localizations, context) : null,
+            );
+          },
         );
       },
     );
