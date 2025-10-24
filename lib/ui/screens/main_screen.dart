@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:app/core/constants/app_constants.dart';
 import 'package:app/core/constants/app_colors.dart';
 import 'package:app/core/constants/app_spacing.dart';
@@ -10,6 +11,7 @@ import 'package:app/features/colors/view/colors_screen.dart';
 import 'package:app/features/calculators/view/calculators_screen.dart';
 import 'package:app/features/settings/view/settings_screen.dart';
 import 'package:app/features/modeling/view/modeling_screen.dart';
+import 'package:app/core/services/locale_service.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -50,82 +52,87 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
-    
-    final screenTitles = [
-      localizations.translate('home'),
-      localizations.translate('colors'),
-      localizations.translate('calculators'),
-      localizations.translate('modelingScreen'),
-      localizations.translate('settings'),
-    ];
+    // Используем Consumer для отслеживания изменений локализации
+    return Consumer<LocaleService>(
+      builder: (context, localeService, child) {
+        final localizations = AppLocalizations.of(context);
+        
+        final screenTitles = [
+          localizations.translate('home'),
+          localizations.translate('colors'),
+          localizations.translate('calculators'),
+          localizations.translate('modelingScreen'),
+          localizations.translate('settings'),
+        ];
 
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: AppBar(
-          title: Text(
-            screenTitles[_currentIndex],
-            style: const TextStyle(
-              fontWeight: FontWeight.w600, // SemiBold
+        return Scaffold(
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(kToolbarHeight),
+            child: AppBar(
+              title: Text(
+                screenTitles[_currentIndex],
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600, // SemiBold
+                ),
+              ),
+              centerTitle: true,
+              // Removed the menu button from actions since we want to remove the duplicate drawer navigation
             ),
           ),
-          centerTitle: true,
-          // Removed the menu button from actions since we want to remove the duplicate drawer navigation
-        ),
-      ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: _onPageChanged,
-        physics: const NeverScrollableScrollPhysics(), // Disable swipe to maintain tab control
-        children: _screens,
-      ),
-      bottomNavigationBar: navigationConfigService.showBottomNavBar
-          ? BottomNavigationBar(
-              currentIndex: _currentIndex,
-              onTap: _onTabTapped,
-              selectedItemColor: Theme.of(context).primaryColor,
-              unselectedItemColor: AppColors.gray,
-              selectedFontSize: AppFonts.titleMedium, // AppFonts.titleSmall
-              unselectedFontSize: AppFonts.bodySmall, // AppFonts.bodySmall
-              type: BottomNavigationBarType.fixed,
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              elevation: 0,
-              items: [
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.home_outlined),
-                  activeIcon: const Icon(Icons.home),
-                  label: localizations.translate('home'),
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.color_lens_outlined),
-                  activeIcon: const Icon(Icons.color_lens),
-                  label: localizations.translate('colors'),
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.calculate_outlined),
-                  activeIcon: const Icon(Icons.calculate),
-                  label: localizations.translate('calculators'),
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.view_in_ar_outlined),
-                  activeIcon: const Icon(Icons.view_in_ar),
-                  label: localizations.translate('modelingScreen'),
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.settings_outlined),
-                  activeIcon: const Icon(Icons.settings),
-                  label: localizations.translate('settings'),
-                ),
-              ],
-            )
-          : null,
-      drawer: navigationConfigService.showDrawer ? _buildDrawer(localizations) : null,
+          body: PageView(
+            controller: _pageController,
+            onPageChanged: _onPageChanged,
+            physics: const NeverScrollableScrollPhysics(), // Disable swipe to maintain tab control
+            children: _screens,
+          ),
+          bottomNavigationBar: navigationConfigService.showBottomNavBar
+              ? BottomNavigationBar(
+                  currentIndex: _currentIndex,
+                  onTap: _onTabTapped,
+                  selectedItemColor: Theme.of(context).primaryColor,
+                  unselectedItemColor: AppColors.gray,
+                  selectedFontSize: AppFonts.titleMedium, // AppFonts.titleSmall
+                  unselectedFontSize: AppFonts.bodySmall, // AppFonts.bodySmall
+                  type: BottomNavigationBarType.fixed,
+                  showSelectedLabels: true,
+                  showUnselectedLabels: true,
+                  elevation: 0,
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: const Icon(Icons.home_outlined),
+                      activeIcon: const Icon(Icons.home),
+                      label: localizations.translate('home'),
+                    ),
+                    BottomNavigationBarItem(
+                      icon: const Icon(Icons.color_lens_outlined),
+                      activeIcon: const Icon(Icons.color_lens),
+                      label: localizations.translate('colors'),
+                    ),
+                    BottomNavigationBarItem(
+                      icon: const Icon(Icons.calculate_outlined),
+                      activeIcon: const Icon(Icons.calculate),
+                      label: localizations.translate('calculators'),
+                    ),
+                    BottomNavigationBarItem(
+                      icon: const Icon(Icons.view_in_ar_outlined),
+                      activeIcon: const Icon(Icons.view_in_ar),
+                      label: localizations.translate('modelingScreen'),
+                    ),
+                    BottomNavigationBarItem(
+                      icon: const Icon(Icons.settings_outlined),
+                      activeIcon: const Icon(Icons.settings),
+                      label: localizations.translate('settings'),
+                    ),
+                  ],
+                )
+              : null,
+          drawer: navigationConfigService.showDrawer ? _buildDrawer(localizations, context) : null,
+        );
+      },
     );
   }
 
-  Widget _buildDrawer(AppLocalizations localizations) {
+  Widget _buildDrawer(AppLocalizations localizations, BuildContext context) {
     return Drawer(
       child: Column(
         children: [
@@ -148,7 +155,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 const SizedBox(height: AppSpacing.s),
                 Text(
-                  AppConstants.appName,
+                  localizations.translate('appTitle'), // Используем локализованный заголовок
                   style: TextStyle(
                     color: Theme.of(context).appBarTheme.foregroundColor,
                     fontSize: 22,
@@ -258,7 +265,7 @@ class _MainScreenState extends State<MainScreen> {
                 const Divider(),
                 AboutListTile(
                   icon: const Icon(Icons.info),
-                  applicationName: AppConstants.appName,
+                  applicationName: localizations.translate('appTitle'), // Используем локализованный заголовок
                   applicationVersion: AppConstants.appVersion,
                   aboutBoxChildren: [
                     const SizedBox(height: AppSpacing.s),
@@ -267,7 +274,7 @@ class _MainScreenState extends State<MainScreen> {
                       style: const TextStyle(fontSize: AppFonts.bodySmall),
                     ),
                   ],
-                  child: Text(localizations.translate('appTitle')),
+                  child: Text(localizations.translate('appTitle')), // Используем локализованный заголовок
                 ),
                 const SizedBox(height: AppSpacing.s),
               ],

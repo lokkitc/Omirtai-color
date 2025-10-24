@@ -46,6 +46,7 @@ class AppLocalizations {
           LocalizationKeys.calculatorsScreen: 'Экран калькуляторов',
           LocalizationKeys.settingsScreen: 'Экран настроек',
           LocalizationKeys.modelingScreen: '3D Моделирование',
+          LocalizationKeys.navigation: 'Навигация',
           // Screen descriptions
           LocalizationKeys.homeScreenDescription: 'Добро пожаловать в Omirtai Color. Здесь вы найдете все необходимые инструменты для работы с цветом.',
           LocalizationKeys.colorsScreenDescription: 'Изучайте и управляйте своими цветовыми палитрами с помощью интуитивных цветовых инструментов.',
@@ -196,6 +197,7 @@ class AppLocalizations {
           LocalizationKeys.calculatorsScreen: 'Калькуляторлар экраны',
           LocalizationKeys.settingsScreen: 'Параметрлер экраны',
           LocalizationKeys.modelingScreen: '3D Модельдеу',
+          LocalizationKeys.navigation: 'Навигация',
           // Screen descriptions
           LocalizationKeys.homeScreenDescription: 'Omirtai Color қолданбасына қош келдіңіз. Түстермен жұмыс істеуге арналған барлық қажетті құралдарды осында табасыз.',
           LocalizationKeys.colorsScreenDescription: 'Интуитивті түрлі құралдармен түстер палитраларын зерттеңіз және басқарыңыз.',
@@ -347,6 +349,7 @@ class AppLocalizations {
           LocalizationKeys.calculatorsScreen: 'Calculators Screen',
           LocalizationKeys.settingsScreen: 'Settings Screen',
           LocalizationKeys.modelingScreen: '3D Modeling',
+          LocalizationKeys.navigation: 'Navigation',
           // Screen descriptions
           LocalizationKeys.homeScreenDescription: 'Welcome to Omirtai Color. Here you will find all the essential tools for working with color.',
           LocalizationKeys.colorsScreenDescription: 'Explore and manage your color palettes with our intuitive color tools.',
