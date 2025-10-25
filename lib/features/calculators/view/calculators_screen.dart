@@ -20,15 +20,7 @@ class CalculatorsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              localizations.translate(LocalizationKeys.calculatorsScreen),
-              style: TextStyle(
-                fontSize: AppFonts.headlineSmall,
-                fontWeight: AppFonts.bold,
-                color: Theme.of(context).textTheme.headlineSmall?.color,
-              ),
-              textAlign: TextAlign.start,
-            ),
+            
             const SizedBox(height: AppSpacing.xs),
               Text(
                 localizations.translate(LocalizationKeys.calculatorsScreenDescription),

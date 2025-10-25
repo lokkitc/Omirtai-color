@@ -10,6 +10,24 @@ class Texture {
     required this.displayName,
   });
 
+  /// Сериализация в JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'assetPath': assetPath,
+      'displayName': displayName,
+    };
+  }
+
+  /// Десериализация из JSON
+  static Texture fromJson(Map<String, dynamic> json) {
+    return Texture(
+      name: json['name'] as String,
+      assetPath: json['assetPath'] as String,
+      displayName: json['displayName'] as String,
+    );
+  }
+
   /// Create a list of available textures
   static List<Texture> getAvailableTextures() {
     return [

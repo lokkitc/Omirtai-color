@@ -20,13 +20,7 @@ class ColorsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              localizations.translate(LocalizationKeys.settings),
-              style: TextStyle(
-                fontSize: AppFonts.headlineSmall,
-                fontWeight: AppFonts.bold,
-              ),
-            ),
+           
             const SizedBox(height: AppSpacing.xs),
             Text(
               localizations.translate(LocalizationKeys.settingsNote),

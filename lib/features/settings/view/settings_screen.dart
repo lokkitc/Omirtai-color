@@ -44,14 +44,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                localizations.translate(LocalizationKeys.settings),
-                style: TextStyle(
-                  fontSize: AppFonts.headlineSmall,
-                  fontWeight: AppFonts.bold,
-                ),
-              ),
-              const SizedBox(height: AppSpacing.xs),
-              Text(
                 localizations.translate(LocalizationKeys.settingsNote),
                 style: TextStyle(
                   fontSize: AppFonts.bodySmall,
